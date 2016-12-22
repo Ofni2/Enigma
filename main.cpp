@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 
 #include "ConnectionTab.hpp"
 #include "Rotor.hpp"
@@ -19,7 +19,7 @@ int main()
 
  char char_to_crypt('a');
  char char_crypted(' ');
-
+ char char_crypted_git(' ');
  /* Permutation used by Enigma are defined by usera */
 
 
