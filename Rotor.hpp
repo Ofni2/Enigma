@@ -18,7 +18,7 @@ public:
 
     // Methodes
     void get_permutationTab();
-    char activate(char charToPermute,int decalage=1);
+    char activate(char charToPermute,int decalage=1,int sens=1);
 
 private :
     // Attriubuts
