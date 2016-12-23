@@ -126,25 +126,12 @@ void Rotor::get_permutationTab()
 **/
 void Rotor::rotate(int decalage)
 {
-    boost::bimap<char,char>::iterator p;
-    boost::bimap<char,char>::iterator q;
-    boost::bimap<char,char>::iterator end;
-
-    boost::bimap<char,char>::right_iterator it;
+    boost::bimap<char,char>::left_iterator pl;
+    boost::bimap<char,char>::left_iterator ql;
+    boost::bimap<char,char>::right_iterator pr;
+    boost::bimap<char,char>::right_iterator qr;
 
     char tmp(' ');
-
-// les rotation possibles se ramenent à 2 cas unique
-    /*
-        if ((sens==1 && decalage==1) || (sens==-1 && decalage==-1))
-        {
-            rotation=1;
-        }
-        else if ((sens==1 && decalage==-1) || (sens==-1 && decalage==1))
-        {
-            rotation=-1;
-        }
-    */
 
     switch(decalage)
     {
@@ -153,11 +140,11 @@ void Rotor::rotate(int decalage)
 
             tmp=m_permutationRotor.right.at('z');
 
-            for(p = m_permutationRotor.begin(); p!=m_permutationRotor.end(); p++)
+            for(pr = m_permutationRotor.right.begin(); pr!=m_permutationRotor.right.end(); pr++)
             {
-                q=p;
-                q++;
-                //  m_permutationRotor.insert(boost::bimap<char,char>::value_type(p->right,q->left));
+                qr=pr;
+                qr++;
+                m_permutationRotor.right.modify_data( pr, boost::bimaps::_data = qr->first );
             }
 
             m_permutationRotor.insert(boost::bimap<char,char>::value_type('a',tmp));
@@ -166,29 +153,14 @@ void Rotor::rotate(int decalage)
 
         case 1:
 
+            tmp=m_permutationRotor.right.at('a');
 
-
-            tmp=m_permutationRotor.left.at('a');
-
-            for( p = m_permutationRotor.begin(); p != m_permutationRotor.end(); ++p )
+            for( pl = m_permutationRotor.left.begin(); pl != m_permutationRotor.left.end(); ++pl )
             {
-                q=p;
-                q++;
+                ql=pl;
+                ql++;
 
-                it= m_permutationRotor.right.find('a');
-                while (it!=m_permutationRotor.end())
-                {
-                    m_permutationRotor.left.replace_data(it,' ');
-
-                    it++
-                }
-                //m_permutationRotor.right.modify_key( it, boost::bimaps::_key = ' ' );
-                m_permutationRotor.right['a']='r'//q->right;
-
-
-
-                //m_permutationRotor.left.modify_data(p->right,_data = q->right);
-                //    m_permutationRotor.insert(boost::bimap<char,char>::value_type(p->left,q->right));
+                m_permutationRotor.left.modify_data( pl, boost::bimaps::_data = ql->second );
             }
 
             m_permutationRotor.insert(boost::bimap<char,char>::value_type('z',tmp));
