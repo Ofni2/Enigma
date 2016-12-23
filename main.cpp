@@ -1,4 +1,4 @@
-ï»¿#include <iostream>
+#include <iostream>
 
 #include "ConnectionTab.hpp"
 #include "Rotor.hpp"
@@ -38,8 +38,8 @@ int main()
     /* Reflector used for Enigma
     reflector B	    (AY) (BR) (CU) (DH) (EQ) (FS) (GL) (IP) (JX) (KN) (MO) (TZ) (VW)
     reflector C	    (AF) (BV) (CP) (DJ) (EI) (GO) (HY) (KR) (LZ) (MX) (NW) (TQ) (SU)
-    reflector B DÃ¼nn	(AE) (BN) (CK) (DQ) (FU) (GY) (HW) (IJ) (LO) (MP) (RX) (SZ) (TV)
-    reflector C DÃ¼nn	(AR) (BD) (CO) (EJ) (FN) (GT) (HK) (IV) (LM) (PW) (QZ) (SX) (UY)
+    reflector B Dünn	(AE) (BN) (CK) (DQ) (FU) (GY) (HW) (IJ) (LO) (MP) (RX) (SZ) (TV)
+    reflector C Dünn	(AR) (BD) (CO) (EJ) (FN) (GT) (HK) (IV) (LM) (PW) (QZ) (SX) (UY)
     */
 
 //initialisation de la machine
@@ -77,16 +77,36 @@ int main()
 
 // Sequence de cryptage d'un caractere
     char_crypted=connectTab.activate(char_to_crypt);
-    char_crypted=rotor1.activate(char_crypted,0,1);
-    char_crypted=rotor2.activate(char_crypted,0,1);
-    char_crypted=rotor3.activate(char_crypted,0,1);
+    char_crypted=rotor1.activate(char_crypted,1);
+    char_crypted=rotor2.activate(char_crypted,1);
+    char_crypted=rotor3.activate(char_crypted,1);
     char_crypted=reflecteur.activate(char_crypted);
-    char_crypted=rotor3.activate(char_crypted,0,-1);
-    char_crypted=rotor2.activate(char_crypted,0,-1);
-    char_crypted=rotor1.activate(char_crypted,0,-1);
+    char_crypted=rotor3.activate(char_crypted,-1);
+    char_crypted=rotor2.activate(char_crypted,-1);
+    char_crypted=rotor1.activate(char_crypted,-1);
     char_crypted=connectTab.activate(char_crypted);
 
     cout<<"caractere crypte : "<<char_crypted<<endl;
+
+rotor1.get_permutationTab();
+    rotor1.rotate(1);
+rotor1.get_permutationTab();
+    cout<<"caractere a crypter : "<<endl;
+    cin>>char_to_crypt;
+
+// Sequence de cryptage d'un caractere
+    char_crypted=connectTab.activate(char_to_crypt);
+    char_crypted=rotor1.activate(char_crypted,1);
+    char_crypted=rotor2.activate(char_crypted,1);
+    char_crypted=rotor3.activate(char_crypted,1);
+    char_crypted=reflecteur.activate(char_crypted);
+    char_crypted=rotor3.activate(char_crypted,-1);
+    char_crypted=rotor2.activate(char_crypted,-1);
+    char_crypted=rotor1.activate(char_crypted,-1);
+    char_crypted=connectTab.activate(char_crypted);
+
+    cout<<"caractere crypte : "<<char_crypted<<endl;
+
 
     return 0;
 }

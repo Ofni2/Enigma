@@ -37,7 +37,6 @@ Reflecteur::Reflecteur(char listPermutation[2][26])
     }
 }
 
-
 /**
 *
 * Methode qui transforme un caracter en focntion de la table de reflection
@@ -68,7 +67,7 @@ void Reflecteur::get_permutationTab()
     cout<<"voici la table de permutation du reflecteur"<<endl;
     for(p=m_permutationReflecteur.begin(); p!=m_permutationReflecteur.end(); p++)
     {
-        cout<<p->first<<"  devient :   "<<p->second<<endl;
+        cout<<p->first<<"   <--->   "<<p->second<<endl;
 
     }
 

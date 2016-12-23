@@ -4,9 +4,10 @@
 #include <vector>
 #include <string>
 #include <iostream>
-#include <map>
-#include <boost/bimap.hpp>
 
+#include <boost/config.hpp>
+#include <boost/bimap.hpp>
+#include <boost/bimap/support/lambda.hpp>
 
 
 class Rotor
@@ -18,12 +19,19 @@ public:
 
     // Methodes
     void get_permutationTab();
-    char activate(char charToPermute,int decalage=1,int sens=1);
+    char activate(char charToPermute,int sens=1);
+    void rotate(int decalage=0);
 
 private :
     // Attriubuts
-    std::map<char,char> m_permutationRotor;
-    boost::bimap<char,char> m_permutationRotor2;
+    typedef boost::bimap< char, char > bm_type;
+    bm_type bm;
+
+    boost::bimap<char,char> m_permutationRotor;
+
+
+
+
 
 };
 
