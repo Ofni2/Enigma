@@ -96,24 +96,12 @@ void Rotor::get_permutationTab()
     boost::bimap<char,char>::iterator end;
 
     cout<<endl<<"voici la table de permutation"<<endl;
-    // for(p=m_permutationRotor.begin(); p!=m_permutationRotor.end(); p++)
-    // {
-    //     cout<<p->first<<"  devient :   "<<p->second<<endl;
-
-    // }
 
     for( p = m_permutationRotor.begin(); p != m_permutationRotor.end(); ++p )
     {
-        //cout<<endl<<"p->left : "<<p->left<<endl;
-        //cout<<"q->right : "<<q->right<<endl;
         cout<<p->left<<"  <-->  "<<p->right<<endl;
-        //m_permutationRotor.insert(boost::bimap<char,char>::value_type(p->left,q->right));
     }
-
-
-    cout<<endl;
 }
-
 
 
 
@@ -126,10 +114,18 @@ void Rotor::get_permutationTab()
 **/
 void Rotor::rotate(int decalage)
 {
-    boost::bimap<char,char>::left_iterator pl;
-    boost::bimap<char,char>::left_iterator ql;
+    //boost::bimap<char,char>::left_iterator pl;
+    //boost::bimap<char,char>::left_iterator plend;
+    //boost::bimap<char,char>::left_iterator ql;
     boost::bimap<char,char>::right_iterator pr;
     boost::bimap<char,char>::right_iterator qr;
+
+
+    typedef boost::bimap< char, char > bm_type;
+bm_type bm;
+
+typedef bm_type::left_map::const_iterator left_const_iterator;
+
 
     char tmp(' ');
 
@@ -147,23 +143,34 @@ void Rotor::rotate(int decalage)
                 m_permutationRotor.right.modify_data( pr, boost::bimaps::_data = qr->first );
             }
 
-            m_permutationRotor.insert(boost::bimap<char,char>::value_type('a',tmp));
+            pr=m_permutationRotor.right.find('a');
+            m_permutationRotor.right.modify_data( pr, boost::bimaps::_data = tmp );
 
             break;
 
         case 1:
 
-            tmp=m_permutationRotor.right.at('a');
+            tmp=m_permutationRotor.left.at('a');
 
-            for( pl = m_permutationRotor.left.begin(); pl != m_permutationRotor.left.end(); ++pl )
+
+    //for( left_const_iterator left_iter = bm.left.begin(), iend = bm.left.end();
+    // left_iter != iend; ++left_iter )
+
+
+for( left_const_iterator left_iter = m_permutationRotor.left.begin(), iend = m_permutationRotor.left.end();
+     left_iter != iend; ++left_iter )
+
+
+            //for( pl = m_permutationRotor.left.begin(), plend=m_permutationRotor.left.end(); pl != plend; ++pl )
             {
-                ql=pl;
-                ql++;
-
-                m_permutationRotor.left.modify_data( pl, boost::bimaps::_data = ql->second );
+                //ql=pl;
+                //ql++;
+                //left_iter->second=left_iter->second;
+                //m_permutationRotor.left.modify_data( pl, boost::bimaps::_data = ql->second );
             }
+            //pl=m_permutationRotor.left.find('z');
+            //m_permutationRotor.left.modify_data( pl, boost::bimaps::_data = tmp );
 
-            m_permutationRotor.insert(boost::bimap<char,char>::value_type('z',tmp));
 
             break;
 
