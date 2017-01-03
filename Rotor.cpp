@@ -12,32 +12,33 @@ using namespace std;
 **/
 Rotor::Rotor()
 {
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('a','a'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('b','b'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('c','c'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('d','d'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('e','e'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('f','f'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('g','g'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('h','h'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('i','i'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('j','j'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('k','k'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('l','l'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('m','m'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('n','n'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('o','o'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('p','p'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('q','q'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('r','r'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('s','s'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('t','t'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('u','u'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('v','v'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('w','w'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('x','x'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('y','y'));
-    m_permutationRotor.insert(boost::bimap<char,char>::value_type('z','z'));
+    rotor_tab[0][0]='a'; rotor_tab[0][1]='a';
+    rotor_tab[1][0]='b'; rotor_tab[1][1]='b';
+    rotor_tab[2][0]='c'; rotor_tab[2][1]='c';
+    rotor_tab[3][0]='d'; rotor_tab[3][1]='d';
+    rotor_tab[4][0]='e'; rotor_tab[4][1]='e';
+    rotor_tab[5][0]='f'; rotor_tab[5][1]='f';
+    rotor_tab[6][0]='g'; rotor_tab[6][1]='g';
+    rotor_tab[7][0]='h'; rotor_tab[7][1]='h';
+    rotor_tab[8][0]='i'; rotor_tab[8][1]='i';
+    rotor_tab[9][0]='j'; rotor_tab[9][1]='j';
+    rotor_tab[10][0]='k'; rotor_tab[10][1]='k';
+    rotor_tab[11][0]='l'; rotor_tab[11][1]='l';
+    rotor_tab[12][0]='m'; rotor_tab[12][1]='m';
+    rotor_tab[13][0]='n'; rotor_tab[13][1]='n';
+    rotor_tab[14][0]='o'; rotor_tab[14][1]='o';
+    rotor_tab[15][0]='p'; rotor_tab[15][1]='p';
+    rotor_tab[16][0]='q'; rotor_tab[16][1]='q';
+    rotor_tab[17][0]='r'; rotor_tab[17][1]='r';
+    rotor_tab[18][0]='s'; rotor_tab[18][1]='s';
+    rotor_tab[19][0]='t'; rotor_tab[19][1]='t';
+    rotor_tab[20][0]='u'; rotor_tab[20][1]='u';
+    rotor_tab[21][0]='v'; rotor_tab[21][1]='v';
+    rotor_tab[22][0]='w'; rotor_tab[22][1]='w';
+    rotor_tab[23][0]='x'; rotor_tab[23][1]='x';
+    rotor_tab[24][0]='y'; rotor_tab[24][1]='y';
+    rotor_tab[25][0]='z'; rotor_tab[25][1]='z';
+
 }
 /**
 ************************
@@ -49,7 +50,8 @@ Rotor::Rotor(const char listPermutation[2][26])
 
     for (int i(0); i<26; ++i)
     {
-        m_permutationRotor.insert(boost::bimap<char,char>::value_type(listPermutation[0][i],listPermutation[1][i]));
+     rotor_tab[i][0]=listPermutation[0][i];
+     rotor_tab[i][1]=listPermutation[1][i];
     }
 }
 
@@ -72,16 +74,18 @@ char Rotor::activate(char charToPermute,int sens)
     switch (sens)
     {
         case 1:
-            charPermuted=m_permutationRotor.left.at(charToPermute);
+            charPermuted=rotor_tab[seek(charToPermute,'L')][1];
             break;
 
         case -1:
-            charPermuted=m_permutationRotor.right.at(charToPermute);
+            charPermuted=rotor_tab[seek(charToPermute,'R')][0];
             break;
     }
 
     return charPermuted;
 }
+
+
 
 /**
 *************************************************************************************
@@ -91,15 +95,11 @@ char Rotor::activate(char charToPermute,int sens)
 **/
 void Rotor::get_permutationTab()
 {
-    boost::bimap<char,char>::iterator p;
-    boost::bimap<char,char>::iterator q;
-    boost::bimap<char,char>::iterator end;
-
     cout<<endl<<"voici la table de permutation"<<endl;
 
-    for( p = m_permutationRotor.begin(); p != m_permutationRotor.end(); ++p )
+    for (int i(0);i<26;i++)
     {
-        cout<<p->left<<"  <-->  "<<p->right<<endl;
+        cout<<rotor_tab[i][0]<<"  <-->  "<<rotor_tab[i][1]<<endl;
     }
 }
 
@@ -114,19 +114,6 @@ void Rotor::get_permutationTab()
 **/
 void Rotor::rotate(int decalage)
 {
-    //boost::bimap<char,char>::left_iterator pl;
-    //boost::bimap<char,char>::left_iterator plend;
-    //boost::bimap<char,char>::left_iterator ql;
-    boost::bimap<char,char>::right_iterator pr;
-    boost::bimap<char,char>::right_iterator qr;
-
-
-    typedef boost::bimap< char, char > bm_type;
-bm_type bm;
-
-typedef bm_type::left_map::const_iterator left_const_iterator;
-
-
     char tmp(' ');
 
     switch(decalage)
@@ -134,47 +121,70 @@ typedef bm_type::left_map::const_iterator left_const_iterator;
 
         case -1:
 
-            tmp=m_permutationRotor.right.at('z');
-
-            for(pr = m_permutationRotor.right.begin(); pr!=m_permutationRotor.right.end(); pr++)
+            tmp=rotor_tab[0][1];
+            for (int i(0);i<25;i++)
             {
-                qr=pr;
-                qr++;
-                m_permutationRotor.right.modify_data( pr, boost::bimaps::_data = qr->first );
+                rotor_tab[i][1]=rotor_tab[i+1][1];
             }
-
-            pr=m_permutationRotor.right.find('a');
-            m_permutationRotor.right.modify_data( pr, boost::bimaps::_data = tmp );
+            rotor_tab[25][1]=tmp;
 
             break;
 
         case 1:
-
-            tmp=m_permutationRotor.left.at('a');
-
-
-    //for( left_const_iterator left_iter = bm.left.begin(), iend = bm.left.end();
-    // left_iter != iend; ++left_iter )
-
-
-for( left_const_iterator left_iter = m_permutationRotor.left.begin(), iend = m_permutationRotor.left.end();
-     left_iter != iend; ++left_iter )
-
-
-            //for( pl = m_permutationRotor.left.begin(), plend=m_permutationRotor.left.end(); pl != plend; ++pl )
+            tmp=rotor_tab[25][1];
+            for (int i(25);i>0;i--)
             {
-                //ql=pl;
-                //ql++;
-                //left_iter->second=left_iter->second;
-                //m_permutationRotor.left.modify_data( pl, boost::bimaps::_data = ql->second );
+                rotor_tab[i][1]=rotor_tab[i-1][1];
             }
-            //pl=m_permutationRotor.left.find('z');
-            //m_permutationRotor.left.modify_data( pl, boost::bimaps::_data = tmp );
-
+            rotor_tab[0][1]=tmp;
 
             break;
 
         case 0:
             break;
     }
+}
+
+
+
+/**
+*************************************************************************************
+* Methode pour
+*
+* @param[in]  x :
+* @param[out]   :
+*
+*************************************************************************************
+**/
+int Rotor::seek(char x,char S)
+{
+    switch (S)
+    {
+        case 'L':
+
+            for (int i(0); i<26; i++)
+            {
+                if (rotor_tab[i][0]== x)
+                {
+                    return i;
+                }
+            }
+
+            break;
+
+        case 'R':
+
+            for (int i(0); i<26; i++)
+            {
+                if (rotor_tab[i][1]== x)
+                {
+                    return i;
+                }
+            }
+        default :
+            break;
+
+    }
+
+    return -1;
 }

@@ -9,8 +9,11 @@ using namespace std;
 
 int main()
 {
+    int i(0),j(0);
     char char_to_crypt(' ');
     char char_crypted(' ');
+    string text(" ");
+    string text_c("");
 
 
 // configuration de la machine
@@ -36,8 +39,8 @@ int main()
     */
 
     /* Reflector used for Enigma
-    reflector B	    (AY) (BR) (CU) (DH) (EQ) (FS) (GL) (IP) (JX) (KN) (MO) (TZ) (VW)
-    reflector C	    (AF) (BV) (CP) (DJ) (EI) (GO) (HY) (KR) (LZ) (MX) (NW) (TQ) (SU)
+    reflector B	        (AY) (BR) (CU) (DH) (EQ) (FS) (GL) (IP) (JX) (KN) (MO) (TZ) (VW)
+    reflector C	        (AF) (BV) (CP) (DJ) (EI) (GO) (HY) (KR) (LZ) (MX) (NW) (TQ) (SU)
     reflector B Dünn	(AE) (BN) (CK) (DQ) (FU) (GY) (HW) (IJ) (LO) (MP) (RX) (SZ) (TV)
     reflector C Dünn	(AR) (BD) (CO) (EJ) (FN) (GT) (HK) (IV) (LM) (PW) (QZ) (SX) (UY)
     */
@@ -63,7 +66,6 @@ int main()
 //--------------
 // Zone de test
 //--------------
-
 // Affichage des tables de correspondance
 //reflecteur.get_permutationTab();
 //connectTab.get_PermutationTab();
@@ -71,41 +73,48 @@ int main()
 //rotor2.get_permutationTab();
 //rotor3.get_permutationTab();
 
+//text="ceci est un txt";
+//text="uohb gag hj xkd";
+text="abcdefghijklmnopqrstuvwxyza";
 
-    cout<<"caractere a crypter : "<<endl;
-    cin>>char_to_crypt;
+// pour chaque caractere du texte à chiffrer
+    for (int i(0); i<text.size(); i++)
+    {
+        if (text[i]==' ')
+        {
+            text_c=text_c+' ';
+            continue;
+        }
 
-// Sequence de cryptage d'un caractere
-    char_crypted=connectTab.activate(char_to_crypt);
-    char_crypted=rotor1.activate(char_crypted,1);
-    char_crypted=rotor2.activate(char_crypted,1);
-    char_crypted=rotor3.activate(char_crypted,1);
-    char_crypted=reflecteur.activate(char_crypted);
-    char_crypted=rotor3.activate(char_crypted,-1);
-    char_crypted=rotor2.activate(char_crypted,-1);
-    char_crypted=rotor1.activate(char_crypted,-1);
-    char_crypted=connectTab.activate(char_crypted);
+        // Sequence de cryptage d'un caractere
+        char_to_crypt=text[i];
+        char_crypted=connectTab.activate(char_to_crypt);
+        char_crypted=rotor1.activate(char_crypted,1);
+        char_crypted=rotor2.activate(char_crypted,1);
+        char_crypted=rotor3.activate(char_crypted,1);
+        char_crypted=reflecteur.activate(char_crypted);
+        char_crypted=rotor3.activate(char_crypted,-1);
+        char_crypted=rotor2.activate(char_crypted,-1);
+        char_crypted=rotor1.activate(char_crypted,-1);
+        char_crypted=connectTab.activate(char_crypted);
 
-    cout<<"caractere crypte : "<<char_crypted<<endl;
+        rotor1.rotate(1);
 
-rotor1.get_permutationTab();
-    rotor1.rotate(1);
-rotor1.get_permutationTab();
-    cout<<"caractere a crypter : "<<endl;
-    cin>>char_to_crypt;
 
-// Sequence de cryptage d'un caractere
-    char_crypted=connectTab.activate(char_to_crypt);
-    char_crypted=rotor1.activate(char_crypted,1);
-    char_crypted=rotor2.activate(char_crypted,1);
-    char_crypted=rotor3.activate(char_crypted,1);
-    char_crypted=reflecteur.activate(char_crypted);
-    char_crypted=rotor3.activate(char_crypted,-1);
-    char_crypted=rotor2.activate(char_crypted,-1);
-    char_crypted=rotor1.activate(char_crypted,-1);
-    char_crypted=connectTab.activate(char_crypted);
+        if ((i)%26==0 && i!=0)
+        {
+          rotor2.rotate(1);
+          j=j+1;
+          if (j%26==0)
+          {
+              rotor3.rotate(1);
+          }
+        }
 
-    cout<<"caractere crypte : "<<char_crypted<<endl;
+        text_c=text_c+char_crypted;
+    }
+
+    cout<<"RESULTAT ---> "<< text_c <<endl;
 
 
     return 0;

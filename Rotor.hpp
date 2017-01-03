@@ -5,10 +5,6 @@
 #include <string>
 #include <iostream>
 
-#include <boost/config.hpp>
-#include <boost/bimap.hpp>
-#include <boost/bimap/support/lambda.hpp>
-
 
 class Rotor
 {
@@ -22,16 +18,13 @@ public:
     char activate(char charToPermute,int sens=1);
     void rotate(int decalage=0);
 
+
 private :
-    // Attriubuts
-    typedef boost::bimap< char, char > bm_type;
-    bm_type bm;
+    // Attributs
+    char rotor_tab[26][2];
 
-    boost::bimap<char,char> m_permutationRotor;
-
-
-
-
+    //Methodes
+    int seek(char x, char S);
 
 };
 
