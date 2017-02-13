@@ -105,12 +105,12 @@ text="hello";
         char_crypted=rotor1.activate(char_crypted,-1);
         char_crypted=connectTab.activate(char_crypted);
 
-        rotor1.rotate(1);
+        rotor1.rotate(-1);
 
 
         if ((i)%26==0 && i!=0)
         {
-          rotor2.rotate(1);
+          rotor2.rotate(-1);
           j=j+1;
           if (j%26==0)
           {

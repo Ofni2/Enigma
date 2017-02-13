@@ -154,11 +154,11 @@ void Rotor::rotate(int decalage)
 	{
 
 	case -1:
-		m_position++;
+		m_position--;
 		break;
 
 	case 1:
-		m_position--;
+		m_position++;
 		break;
 
 	case 0:
