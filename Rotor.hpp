@@ -29,12 +29,10 @@ public:
 
 private :
     // Attributs
-    char rotor_tab[26][2];
+    char internalWiringTab[26][2];
 	int m_steppingPosition;
 	int m_ringSetting;
 	int m_rotorStartPosition;
-	char m_wiringTab[26][2];
-	char m_contactTab[26][2];
 	int m_position;
 
 

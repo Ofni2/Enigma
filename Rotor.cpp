@@ -12,43 +12,36 @@ using namespace std;
 **/
 Rotor::Rotor()
 {
-	rotor_tab[0][0] = 'a'; rotor_tab[0][1] = 'a';
-	rotor_tab[1][0] = 'b'; rotor_tab[1][1] = 'b';
-	rotor_tab[2][0] = 'c'; rotor_tab[2][1] = 'c';
-	rotor_tab[3][0] = 'd'; rotor_tab[3][1] = 'd';
-	rotor_tab[4][0] = 'e'; rotor_tab[4][1] = 'e';
-	rotor_tab[5][0] = 'f'; rotor_tab[5][1] = 'f';
-	rotor_tab[6][0] = 'g'; rotor_tab[6][1] = 'g';
-	rotor_tab[7][0] = 'h'; rotor_tab[7][1] = 'h';
-	rotor_tab[8][0] = 'i'; rotor_tab[8][1] = 'i';
-	rotor_tab[9][0] = 'j'; rotor_tab[9][1] = 'j';
-	rotor_tab[10][0] = 'k'; rotor_tab[10][1] = 'k';
-	rotor_tab[11][0] = 'l'; rotor_tab[11][1] = 'l';
-	rotor_tab[12][0] = 'm'; rotor_tab[12][1] = 'm';
-	rotor_tab[13][0] = 'n'; rotor_tab[13][1] = 'n';
-	rotor_tab[14][0] = 'o'; rotor_tab[14][1] = 'o';
-	rotor_tab[15][0] = 'p'; rotor_tab[15][1] = 'p';
-	rotor_tab[16][0] = 'q'; rotor_tab[16][1] = 'q';
-	rotor_tab[17][0] = 'r'; rotor_tab[17][1] = 'r';
-	rotor_tab[18][0] = 's'; rotor_tab[18][1] = 's';
-	rotor_tab[19][0] = 't'; rotor_tab[19][1] = 't';
-	rotor_tab[20][0] = 'u'; rotor_tab[20][1] = 'u';
-	rotor_tab[21][0] = 'v'; rotor_tab[21][1] = 'v';
-	rotor_tab[22][0] = 'w'; rotor_tab[22][1] = 'w';
-	rotor_tab[23][0] = 'x'; rotor_tab[23][1] = 'x';
-	rotor_tab[24][0] = 'y'; rotor_tab[24][1] = 'y';
-	rotor_tab[25][0] = 'z'; rotor_tab[25][1] = 'z';
+	internalWiringTab[0][0] = 'a'; internalWiringTab[0][1] = 'a';
+	internalWiringTab[1][0] = 'b'; internalWiringTab[1][1] = 'b';
+	internalWiringTab[2][0] = 'c'; internalWiringTab[2][1] = 'c';
+	internalWiringTab[3][0] = 'd'; internalWiringTab[3][1] = 'd';
+	internalWiringTab[4][0] = 'e'; internalWiringTab[4][1] = 'e';
+	internalWiringTab[5][0] = 'f'; internalWiringTab[5][1] = 'f';
+	internalWiringTab[6][0] = 'g'; internalWiringTab[6][1] = 'g';
+	internalWiringTab[7][0] = 'h'; internalWiringTab[7][1] = 'h';
+	internalWiringTab[8][0] = 'i'; internalWiringTab[8][1] = 'i';
+	internalWiringTab[9][0] = 'j'; internalWiringTab[9][1] = 'j';
+	internalWiringTab[10][0] = 'k'; internalWiringTab[10][1] = 'k';
+	internalWiringTab[11][0] = 'l'; internalWiringTab[11][1] = 'l';
+	internalWiringTab[12][0] = 'm'; internalWiringTab[12][1] = 'm';
+	internalWiringTab[13][0] = 'n'; internalWiringTab[13][1] = 'n';
+	internalWiringTab[14][0] = 'o'; internalWiringTab[14][1] = 'o';
+	internalWiringTab[15][0] = 'p'; internalWiringTab[15][1] = 'p';
+	internalWiringTab[16][0] = 'q'; internalWiringTab[16][1] = 'q';
+	internalWiringTab[17][0] = 'r'; internalWiringTab[17][1] = 'r';
+	internalWiringTab[18][0] = 's'; internalWiringTab[18][1] = 's';
+	internalWiringTab[19][0] = 't'; internalWiringTab[19][1] = 't';
+	internalWiringTab[20][0] = 'u'; internalWiringTab[20][1] = 'u';
+	internalWiringTab[21][0] = 'v'; internalWiringTab[21][1] = 'v';
+	internalWiringTab[22][0] = 'w'; internalWiringTab[22][1] = 'w';
+	internalWiringTab[23][0] = 'x'; internalWiringTab[23][1] = 'x';
+	internalWiringTab[24][0] = 'y'; internalWiringTab[24][1] = 'y';
+	internalWiringTab[25][0] = 'z'; internalWiringTab[25][1] = 'z';
 
-	for (int i(0); i < 26; i++)
-	{
-			m_wiringTab[i][0] = rotor_tab[i][0];
-			m_wiringTab[i][1] = rotor_tab[i][1];
-
-			m_contactTab[i][0]= rotor_tab[i][0];
-			m_contactTab[i][1] = i;
-	}
-	m_rotorStartPosition = 0;
-	m_ringSetting = 0;
+	m_rotorStartPosition = 1;
+	m_ringSetting = 1;
+	m_position = 0;
 
 }
 
@@ -63,18 +56,13 @@ Rotor::Rotor(const char listPermutation[2][26],int ringSetting, int startPositio
 {
 		for (int i(0); i < 26; ++i)
 		{
-			rotor_tab[i][0] = listPermutation[0][i];
-			rotor_tab[i][1] = listPermutation[1][i];
-			
-			m_wiringTab[i][0] = listPermutation[i][0];
-			m_wiringTab[i][1] = listPermutation[i][1];
-
+			internalWiringTab[i][0] = listPermutation[0][i];
+			internalWiringTab[i][1] = listPermutation[1][i];
 		}
 
 		m_ringSetting = ringSetting;
 		m_rotorStartPosition = startPosition;
-
-
+		m_position = 0;
 }
 
 
@@ -100,14 +88,15 @@ char Rotor::activate(char charToPermute,int sens)
     {
         case 1:
 
-			offset = m_rotorStartPosition - m_ringSetting + (charToPermute - 96) - 1;
+			offset = m_rotorStartPosition - m_ringSetting + (charToPermute - 96) - 1 + m_position;
 			if (offset < 0) { offset = 26 - offset; }
 			charPermuted = offset % 26 + 1;
 
-			for (int i(0); i<26; i++) { if (m_wiringTab[i][0] == (charPermuted + 96)) { index = i; } }
+			for (int i(0); i<26; i++) {
+				if (internalWiringTab[i][0] == (charPermuted + 96)) { index = i; } }
 
-			charPermuted = m_wiringTab[index][1] - 96;
-			offset = -m_rotorStartPosition + m_ringSetting + charPermuted - 1;
+			charPermuted = internalWiringTab[index][1] - 96;
+			offset = -m_rotorStartPosition + m_ringSetting + charPermuted - 1 + m_position;
 			if (offset < 0) { offset = 26 + offset; }
 			charPermuted = offset % 26 + 1 + 96;
 
@@ -115,14 +104,14 @@ char Rotor::activate(char charToPermute,int sens)
 
         case -1:
 
-			offset = m_rotorStartPosition - m_ringSetting + (charToPermute - 96) - 1;
+			offset = m_rotorStartPosition - m_ringSetting + (charToPermute - 96) - 1 + m_position;
 			if (offset < 0) { offset = 26 - offset; }
 			charPermuted = offset % 26 + 1;
 
-			for (int i(0); i<26; i++) { if (m_wiringTab[i][1] == (charPermuted + 96)) { index = i; } }
+			for (int i(0); i<26; i++) { if (internalWiringTab[i][1] == (charPermuted + 96)) { index = i; } }
 
-			charPermuted = m_wiringTab[index][0] - 96;
-			offset = -m_rotorStartPosition + m_ringSetting + charPermuted - 1;
+			charPermuted = internalWiringTab[index][0] - 96;
+			offset = -m_rotorStartPosition + m_ringSetting + charPermuted - 1 + m_position;
 			if (offset < 0) { offset = 26 + offset; }
 			charPermuted = offset % 26 + 1 + 96;
 
@@ -146,7 +135,7 @@ void Rotor::get_permutationTab()
 
     for (int i(0);i<26;i++)
     {
-        cout<<rotor_tab[i][0]<<"  <-->  "<<rotor_tab[i][1]<<endl;
+        cout<<internalWiringTab[i][0]<<"  <-->  "<<internalWiringTab[i][1]<<endl;
     }
 }
 
@@ -160,35 +149,52 @@ void Rotor::get_permutationTab()
 **/
 void Rotor::rotate(int decalage)
 {
-    char tmp(' ');
+    
+	switch (decalage)
+	{
 
+	case -1:
+		m_position++;
+		break;
+
+	case 1:
+		m_position--;
+		break;
+
+	case 0:
+		break;
+	}
+	
+	/* old code
+	char tmp(' ');
     switch(decalage)
     {
 
         case -1:
 
-            tmp=rotor_tab[0][1];
+            tmp=internalWiringTab[0][1];
             for (int i(0);i<25;i++)
             {
-                rotor_tab[i][1]=rotor_tab[i+1][1];
+                internalWiringTab[i][1]=internalWiringTab[i+1][1];
             }
-            rotor_tab[25][1]=tmp;
+            internalWiringTab[25][1]=tmp;
 
             break;
 
         case 1:
-            tmp=rotor_tab[25][1];
+            tmp=internalWiringTab[25][1];
             for (int i(25);i>0;i--)
             {
-                rotor_tab[i][1]=rotor_tab[i-1][1];
+                internalWiringTab[i][1]=internalWiringTab[i-1][1];
             }
-            rotor_tab[0][1]=tmp;
+            internalWiringTab[0][1]=tmp;
 
             break;
 
         case 0:
             break;
     }
+	*/
 }
 
 
@@ -209,7 +215,7 @@ int Rotor::m_seek(char x,char S)
 
             for (int i(0); i<26; i++)
             {
-                if (rotor_tab[i][0]== x)
+                if (internalWiringTab[i][0]== x)
                 {
                     return i;
                 }
@@ -221,7 +227,7 @@ int Rotor::m_seek(char x,char S)
 
             for (int i(0); i<26; i++)
             {
-                if (rotor_tab[i][1]== x)
+                if (internalWiringTab[i][1]== x)
                 {
                     return i;
                 }

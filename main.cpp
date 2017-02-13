@@ -50,16 +50,17 @@ int main()
     ConnectionTab connectTab(Permutation);
 
 // 2 - initialisation du premier rotor
-    Rotor rotor1(Ro_I);
+    Rotor rotor1(Ro_I,1,1);
 
 // 3 - initialisation du deuxieme rotor
-    Rotor rotor2(Ro_II);
+    Rotor rotor2(Ro_II,1,1);
 
 // 4 - initialisation du troisieme rotor
-    Rotor rotor3(Ro_III);
+    Rotor rotor3(Ro_III,1,1);
 
 // 5 - initialisation du reflecteur
     Reflecteur reflecteur(Re_B);
+
 
 
 
@@ -73,12 +74,14 @@ int main()
 //rotor2.get_permutationTab();
 //rotor3.get_permutationTab();
 
-//text="ceci est un txt";
-//text="uohb gag hj xkd";
-text="abcdefghijklmnopqrstuvwxyza";
+//text="hello";
+//text="MFNCZ";
+text="hello";
+
 
 // pour chaque caractere du texte à chiffrer
-    for (int i(0); i<text.size(); i++)
+	int textSize(text.size());
+    for (int i(0); i<textSize; i++)
     {
         if (text[i]==' ')
         {
@@ -89,10 +92,14 @@ text="abcdefghijklmnopqrstuvwxyza";
         // Sequence de cryptage d'un caractere
         char_to_crypt=text[i];
         char_crypted=connectTab.activate(char_to_crypt);
+
         char_crypted=rotor1.activate(char_crypted,1);
         char_crypted=rotor2.activate(char_crypted,1);
         char_crypted=rotor3.activate(char_crypted,1);
-        char_crypted=reflecteur.activate(char_crypted);
+        
+		
+		char_crypted=reflecteur.activate(char_crypted);
+
         char_crypted=rotor3.activate(char_crypted,-1);
         char_crypted=rotor2.activate(char_crypted,-1);
         char_crypted=rotor1.activate(char_crypted,-1);
