@@ -49,7 +49,7 @@ int main()
     ConnectionTab connectTab(Permutation);
 
 // 2 - initialisation du premier rotor
-    Rotor rotor1(Ro_I,7,23);
+    Rotor rotor1(Ro_I,1,1);
 
 // 3 - initialisation du deuxieme rotor
     Rotor rotor2(Ro_II,1,1);
@@ -82,7 +82,7 @@ int main()
 //				Plug pairs : AN EZ HK IJ LR MQ OT PV SW UX
 //           	Message key : UZV
 
-text = "YKAE NZAP MSCH ZBFO CUVM RMDP YCOF HADZ";
+text = "hello";
 
 
 
