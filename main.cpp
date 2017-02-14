@@ -17,12 +17,11 @@ int main()
 
 
 // configuration de la machine
-    char Permutation[2][6]= {{'a','b','c','d','e','f'},{'f','e','d','c','b','a'}};
+    char Permutation[2][6]= {{'a','e','c','d','e','f'},{'f','e','d','c','b','a'}};
     char Ro_I[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'e','k','m','f','l','g','d','q','v','z','n','t','o','w','y','h','x','u','s','p','a','i','b','r','c','j'}};
     char Ro_II[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'a','j','d','k','s','i','r','u','x','b','l','h','w','t','m','c','q','g','z','n','p','y','f','v','o','e'}};
     char Ro_III[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'b','d','f','h','j','l','c','p','r','t','x','v','z','n','y','e','i','w','g','a','k','m','u','s','q','o'}};
     char Re_B[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'y','r','u','h','q','s','l','d','p','x','n','g','o','k','m','i','e','b','f','z','c','w','v','j','a','t'}};
-
 
 
     /* Permutation used by Enigma are defined by usera */
@@ -50,7 +49,7 @@ int main()
     ConnectionTab connectTab(Permutation);
 
 // 2 - initialisation du premier rotor
-    Rotor rotor1(Ro_I,1,1);
+    Rotor rotor1(Ro_I,7,23);
 
 // 3 - initialisation du deuxieme rotor
     Rotor rotor2(Ro_II,1,1);
@@ -74,9 +73,17 @@ int main()
 //rotor2.get_permutationTab();
 //rotor3.get_permutationTab();
 
-//text="hello";
-//text="MFNCZ";
-text="hello";
+
+//text="YKAE NZAP MSCH ZBFO CUVM RMDP YCOF HADZ IZME FXTH FLOL PZLF GGBO TGOX GRET DWTJ IQHL MXVJ WKZU ASTR"*
+// settings : 
+//				Reflector: 	B
+//				Wheel order		: III	 VI		VIII
+//				Ring positions	: 01	 08		13
+//				Plug pairs : AN EZ HK IJ LR MQ OT PV SW UX
+//           	Message key : UZV
+
+text = "YKAE NZAP MSCH ZBFO CUVM RMDP YCOF HADZ";
+
 
 
 // pour chaque caractere du texte à chiffrer
@@ -91,19 +98,20 @@ text="hello";
 
         // Sequence de cryptage d'un caractere
         char_to_crypt=text[i];
-        char_crypted=connectTab.activate(char_to_crypt);
 
-        char_crypted=rotor1.activate(char_crypted,1);
+        char_crypted=connectTab.activate(char_to_crypt);
+        
+		char_crypted=rotor1.activate(char_crypted,1);
         char_crypted=rotor2.activate(char_crypted,1);
         char_crypted=rotor3.activate(char_crypted,1);
-        
 		
 		char_crypted=reflecteur.activate(char_crypted);
 
         char_crypted=rotor3.activate(char_crypted,-1);
         char_crypted=rotor2.activate(char_crypted,-1);
         char_crypted=rotor1.activate(char_crypted,-1);
-        char_crypted=connectTab.activate(char_crypted);
+        
+		char_crypted=connectTab.activate(char_crypted);
 
         rotor1.rotate(-1);
 
@@ -114,7 +122,7 @@ text="hello";
           j=j+1;
           if (j%26==0)
           {
-              rotor3.rotate(1);
+              rotor3.rotate(-1);
           }
         }
 
