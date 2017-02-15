@@ -12,7 +12,7 @@ class Rotor
 public:
     // Constructeur
     Rotor();
-    Rotor(const char listPermutation[2][26],int ringSetting,int startPosition);
+	Rotor(const char listPermutation[2][26], int ringSetting, int startPosition, char stepping1, char stepping2);
 
     // Methodes
     void get_permutationTab();
@@ -30,7 +30,10 @@ public:
 private :
     // Attributs
     char internalWiringTab[26][2];
-	int m_steppingPosition;
+
+	char m_steppingPosition1;
+	char m_steppingPosition2;
+	
 	int m_ringSetting;
 	int m_rotorStartPosition;
 	int m_position;

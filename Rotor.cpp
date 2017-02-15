@@ -43,6 +43,9 @@ Rotor::Rotor()
 	m_ringSetting = 1;
 	m_position = 0;
 
+	m_steppingPosition1 = 'a';
+	m_steppingPosition2 = ' ';
+
 }
 
 
@@ -52,7 +55,7 @@ Rotor::Rotor()
 	* Constructeur
 	************************
 	**/
-Rotor::Rotor(const char listPermutation[2][26],int ringSetting, int startPosition)
+Rotor::Rotor(const char listPermutation[2][26],int ringSetting, int startPosition,char stepping1,char stepping2)
 {
 		for (int i(0); i < 26; ++i)
 		{
@@ -63,6 +66,9 @@ Rotor::Rotor(const char listPermutation[2][26],int ringSetting, int startPositio
 		m_ringSetting = ringSetting;
 		m_rotorStartPosition = startPosition;
 		m_position = 0;
+
+		m_steppingPosition1 = stepping1;
+		m_steppingPosition2 = stepping2;
 }
 
 
