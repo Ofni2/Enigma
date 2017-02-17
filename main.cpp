@@ -3,6 +3,7 @@
 #include "ConnectionTab.hpp"
 #include "Rotor.hpp"
 #include "Reflecteur.hpp"
+#include "Machine.hpp"
 
 
 using namespace std;
@@ -15,6 +16,8 @@ int main()
     string text(" ");
     string text_c("");
 
+	Machine machineEnigma;
+	machineEnigma.initMachine("I");
 
 // configuration de la machine
     char Permutation[2][6]= {{'a','e','c','d','e','f'},{'f','e','d','c','b','a'}};

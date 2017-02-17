@@ -12,34 +12,6 @@ using namespace std;
 **/
 Rotor::Rotor()
 {
-/*	m_internalWiringTab[0][0] = 'a'; m_internalWiringTab[1][0] = 'a';
-	m_internalWiringTab[0][1] = 'b'; m_internalWiringTab[1][1] = 'b';
-	m_internalWiringTab[0][2] = 'c'; m_internalWiringTab[1][2] = 'c';
-	m_internalWiringTab[0][3] = 'd'; m_internalWiringTab[1][3] = 'd';
-	m_internalWiringTab[0][4] = 'e'; m_internalWiringTab[1][4] = 'e';
-	m_internalWiringTab[0][5] = 'f'; m_internalWiringTab[1][5] = 'f';
-	m_internalWiringTab[0][6] = 'g'; m_internalWiringTab[1][6] = 'g';
-	m_internalWiringTab[0][7] = 'h'; m_internalWiringTab[1][7] = 'h';
-	m_internalWiringTab[0][8] = 'i'; m_internalWiringTab[1][8] = 'i';
-	m_internalWiringTab[0][9] = 'j'; m_internalWiringTab[1][9]  = 'j';
-	m_internalWiringTab[0][10] = 'k'; m_internalWiringTab[1][10] = 'k';
-	m_internalWiringTab[0][11] = 'l'; m_internalWiringTab[1][11] = 'l';
-	m_internalWiringTab[0][12] = 'm'; m_internalWiringTab[1][12] = 'm';
-	m_internalWiringTab[0][13] = 'n'; m_internalWiringTab[1][13] = 'n';
-	m_internalWiringTab[0][14] = 'o'; m_internalWiringTab[1][14] = 'o';
-	m_internalWiringTab[0][15] = 'p'; m_internalWiringTab[1][15] = 'p';
-	m_internalWiringTab[0][16] = 'q'; m_internalWiringTab[1][16] = 'q';
-	m_internalWiringTab[0][17] = 'r'; m_internalWiringTab[1][17]= 'r';
-	m_internalWiringTab[0][18] = 's'; m_internalWiringTab[1][18]= 's';
-	m_internalWiringTab[0][19] = 't'; m_internalWiringTab[1][19]= 't';
-	m_internalWiringTab[0][20] = 'u'; m_internalWiringTab[1][20]= 'u';
-	m_internalWiringTab[0][21] = 'v'; m_internalWiringTab[1][21]= 'v';
-	m_internalWiringTab[0][22] = 'w'; m_internalWiringTab[1][22]= 'w';
-	m_internalWiringTab[0][23] = 'x'; m_internalWiringTab[1][23]= 'x';
-	m_internalWiringTab[0][24] = 'y'; m_internalWiringTab[1][24]= 'y';
-	m_internalWiringTab[0][25] = 'z'; m_internalWiringTab[1][25]= 'z';
-*/
-
 	m_name = "noName";
 
 	m_ringSetting = 1;
@@ -58,12 +30,12 @@ Rotor::Rotor()
 
 
 
-	/**
-	************************
-	* Constructeur
-	************************
-	**/
-  Rotor::Rotor(char internalWiring[2][26], const int &ringSetting, const int &startPosition, const char &stepping1, const char &stepping2, const string &name)
+/**
+************************
+* Constructeur
+************************
+**/
+Rotor::Rotor(char internalWiring[2][26], const int &ringSetting, const int &startPosition, const char &stepping1, const char &stepping2, const string &name)
 {
 		m_name = name;
 

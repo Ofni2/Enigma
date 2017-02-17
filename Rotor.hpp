@@ -39,7 +39,6 @@ private :
 	char m_steppingPosition2;
 
 	char m_internalWiringTab[2][26];
-	//char (*m_internalWiring)[26][2];
 
     //Methodes
     int m_seek(char x, char S);
