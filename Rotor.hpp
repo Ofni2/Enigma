@@ -4,16 +4,15 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <string>
 
-// #ascii chiffré = [#ascii-97+decalage]%26+97
 
 class Rotor
 {
 public:
     // Constructeur
     Rotor();
-	Rotor(const char listPermutation[2][26], int ringSetting, int startPosition, char stepping1, char stepping2);
-
+    Rotor(char internalWiring[2][26], const int &ringSetting, const int &startPosition, const char &stepping1 = 'z', const char &stepping2 = ' ', const std::string &name = "noName");
     // Methodes
     void get_permutationTab();
 	int get_ringSetting();
@@ -29,15 +28,18 @@ public:
 
 private :
     // Attributs
-    char internalWiringTab[26][2];
+
+	std::string m_name;
+
+	int m_ringSetting;
+	int m_startPosition;
+	int m_position;
 
 	char m_steppingPosition1;
 	char m_steppingPosition2;
-	
-	int m_ringSetting;
-	int m_rotorStartPosition;
-	int m_position;
 
+	char m_internalWiringTab[2][26];
+	//char (*m_internalWiring)[26][2];
 
     //Methodes
     int m_seek(char x, char S);
