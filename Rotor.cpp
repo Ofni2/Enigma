@@ -81,9 +81,9 @@ char Rotor::activate(char charToPermute,int sens)
 			charPermuted = offset % 26 + 1;
 
 			for (int i(0); i<26; i++) {
-				if (m_internalWiringTab[i][0] == (charPermuted + 96)) { index = i; } }
+				if (m_internalWiringTab[0][i] == (charPermuted + 96)) { index = i; } }
 
-			charPermuted = m_internalWiringTab[index][1] - 96;
+			charPermuted = m_internalWiringTab[1][index] - 96;
 			offset = -m_startPosition + (m_ringSetting + m_position) + charPermuted - 1;
 			if (offset < 0) { offset = 26 + offset; }
 			charPermuted = offset % 26 + 1 + 96;
@@ -96,9 +96,9 @@ char Rotor::activate(char charToPermute,int sens)
 			if (offset < 0) { offset = 26 - offset; }
 			charPermuted = offset % 26 + 1;
 
-			for (int i(0); i<26; i++) { if (m_internalWiringTab[i][1] == (charPermuted + 96)) { index = i; } }
+			for (int i(0); i<26; i++) { if (m_internalWiringTab[1][i] == (charPermuted + 96)) { index = i; } }
 
-			charPermuted = m_internalWiringTab[index][0] - 96;
+			charPermuted = m_internalWiringTab[0][index] - 96;
 			offset = -m_startPosition + (m_ringSetting + m_position) + charPermuted - 1;
 			if (offset < 0) { offset = 26 + offset; }
 			charPermuted = offset % 26 + 1 + 96;

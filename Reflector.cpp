@@ -1,4 +1,4 @@
-#include "Reflecteur.hpp"
+#include "Reflector.hpp"
 
 using namespace std;
 
@@ -11,7 +11,7 @@ using namespace std;
 * initialisation par defaut
 *
 **/
-Reflecteur::Reflecteur()
+Reflector::Reflector()
 {
 }
 //--------------------------------------------------------------
@@ -23,17 +23,17 @@ Reflecteur::Reflecteur()
 //--------------------------------------------------------------
 /**
 *
-* initialisation du reflecteur en fonction d'un tableau de permutation
+* initialisation du Reflector en fonction d'un tableau de permutation
 *
 **/
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-Reflecteur::Reflecteur(char listPermutation[2][26])
+Reflector::Reflector(char listPermutation[2][26])
 {
     for (int i(0); i<26; ++i)
     {
-        m_permutationReflecteur[listPermutation[0][i]]=listPermutation[1][i];
-        m_permutationReflecteur[listPermutation[1][i]]=listPermutation[0][i];
+        m_permutationReflector[listPermutation[0][i]]=listPermutation[1][i];
+        m_permutationReflector[listPermutation[1][i]]=listPermutation[0][i];
     }
 }
 
@@ -45,9 +45,9 @@ Reflecteur::Reflecteur(char listPermutation[2][26])
 * @param[out]   charater permuté à partir de la table
 *
 **/
-char Reflecteur::activate(char charToPermute)
+char Reflector::activate(char charToPermute)
 {
-return m_permutationReflecteur[charToPermute];
+return m_permutationReflector[charToPermute];
 }
 
 
@@ -56,16 +56,16 @@ return m_permutationReflecteur[charToPermute];
 //--------------------------------------------------------------
 /**
 *
-* Methode d'affichage du reflecteur
+* Methode d'affichage du Reflector
 *
 **/
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-void Reflecteur::get_permutationTab()
+void Reflector::get_permutationTab()
 {
     map<char,char>::iterator p;
-    cout<<"voici la table de permutation du reflecteur"<<endl;
-    for(p=m_permutationReflecteur.begin(); p!=m_permutationReflecteur.end(); p++)
+    cout<<"voici la table de permutation du Reflector"<<endl;
+    for(p=m_permutationReflector.begin(); p!=m_permutationReflector.end(); p++)
     {
         cout<<p->first<<"   <--->   "<<p->second<<endl;
 

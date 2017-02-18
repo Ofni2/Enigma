@@ -1,5 +1,5 @@
-#ifndef DEF_REFELCTEUR
-#define DEF_REFLECTUER
+#ifndef DEF_REFLECTER
+#define DEF_REFLECTER
 
 #include <vector>
 #include <string>
@@ -7,12 +7,12 @@
 #include <map>
 
 
-class Reflecteur
+class Reflector
 {
 public:
     // Constructeur
-    Reflecteur();
-    Reflecteur(char listPermutation[2][26]);
+    Reflector();
+    Reflector(char listPermutation[2][26]);
 
     // Methodes
     void get_permutationTab();
@@ -20,7 +20,7 @@ public:
 
 private :
     // Attriubuts
-    std::map<char,char> m_permutationReflecteur;
+    std::map<char,char> m_permutationReflector;
 
 };
 

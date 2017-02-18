@@ -2,6 +2,10 @@
 #define MACHINE_H
 
 #include <string>
+#include <map>
+#include "Rotor.hpp"
+#include "Reflector.hpp"
+
 
 class Machine
 {
@@ -13,6 +17,15 @@ class Machine
 
 
     protected:
+
+		std::string m_name;
+		int m_rotorMumber;
+		
+		//std::map<int,Rotor::Rotor*> m_availableRotor;
+		int m_usedRotor;
+		
+		int m_availableReflector;
+		int m_usedReflector;
 
 		
 

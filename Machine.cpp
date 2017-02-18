@@ -22,11 +22,12 @@ void Machine::initMachine(string name)
 	ifstream configFile("Enigma.cfg");
 	if (configFile.is_open())
 		{
-	//http://www.cplusplus.com/doc/tutorial/files/
-			while (getline(configFile, line))
-				{
-				cout << line << '\n';
-				}
+		//http://www.cplusplus.com/doc/tutorial/files/
+		
+		while (getline(configFile, line))
+			{
+			cout << line << '\n';
+			}
 
 			configFile.close();
 		}

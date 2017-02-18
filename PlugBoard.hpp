@@ -1,19 +1,19 @@
-#ifndef DEF_CONNECTIONTAB
-#define DEF_CONNECTIONTAB
+#ifndef DEF_PlugBoard
+#define DEF_PlugBoard
 
 #include <string>
 #include <iostream>
 #include <map>
 
 
-class ConnectionTab
+class PlugBoard
 {
 
 public:
 
 //constructeur
-ConnectionTab();
-ConnectionTab(char liste[2][6]);
+PlugBoard();
+PlugBoard(char liste[2][6]);
 
 //methode
 void get_PermutationTab();

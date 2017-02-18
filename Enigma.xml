@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<xml>
+  <RotorList>
+    <rotor>
+      <name>I</name>
+      <wirring>EKMFLGDQVZNTOWYHXUSPAIBRCJ</wirring>
+      <stepping>Q</stepping>
+      <comment>1930, Enigma I</comment>
+    </rotor>
+    <rotor>
+      <name>II</name>
+      <wirring>AJDKSIRUXBLHWTMCQGZNPYFVOE</wirring>
+      <stepping>E</stepping>
+      <comment>1930, Enigma I</comment>
+    </rotor>
+    <rotor>
+      <name>III</name>
+      <wirring>BDFHJLCPRTXVZNYEIWGAKMUSQO</wirring>
+      <stepping>V</stepping>
+      <comment>1930, Enigma I</comment>
+    </rotor>
+    <rotor>
+      <name>IV</name>
+      <wirring>ESOVPZJAYQUIRHXLNFTGKDCMWB</wirring>
+      <stepping>J</stepping>
+      <comment>Dec. 1938 M3 Army</comment>
+    </rotor>
+    <rotor>
+      <name>V</name>
+      <wirring>VZBRGITYUPSDNHLXAWMJQOFECK</wirring>
+      <stepping>Z</stepping>
+      <comment>Dec. 1938, M3 Army</comment>
+    </rotor>
+    <rotor>
+      <name>VI</name>
+      <wirring>JPGVOUMFYQBENHZRDKASXLICTW</wirring>
+      <stepping>Z,M</stepping>
+      <comment>M3 (1939), M4 Naval (FEB 1942)</comment>
+    </rotor>
+    <rotor>
+      <name>VII</name>
+      <wirring>NZJHGRCXMYSWBOUFAIVLPEKQDT</wirring>
+      <stepping>Z,M</stepping>
+      <comment>M3(1939), M4 Naval (FEB 1942)</comment>
+    </rotor>
+    <rotor>
+      <name>VIII</name>
+      <wirring>FKQHTLXOCBJSPDZRAMEWNIUYGV</wirring>
+      <stepping>Z,M</stepping>
+      <comment></comment>
+    </rotor>
+  </RotorList>
+  <ReflectorList>
+    <reflector>
+      <name>B</name>
+      <wirring>AY,BR,CU,DH,EQ,FS,GL,IP,JX,KN,MO,TZ,VW</wirring>
+      <comment></comment>
+    </reflector>
+    <reflector>
+      <name>C</name>
+      <wirring>AF,BV,CP,DJ,EI,GO,HY,KR,LZ,MX,NW,TQ,SU</wirring>
+      <comment></comment>
+    </reflector>
+    <reflector>
+      <name>B thin</name>
+      <wirring>AE,BN,CK,DQ,FU,GY,HW,IJ,LO,MP,RX,SZ,TV</wirring>
+      <comment></comment>
+    </reflector>
+    <reflector>
+      <name>C thin</name>
+      <wirring>AR,BD,CO,EJ,FN,GT,HK,IV,LM,PW,QZ,SX,UY</wirring>
+      <comment></comment>
+    </reflector>
+  </ReflectorList>
+  <MachineList>
+    <machine>
+      <name>Enigma I</name>
+      <AllowableRotor>I,II,III,IV,V,VI,VII,VII</AllowableRotor>
+      <AllowableReflector>B,C</AllowableReflector>
+      <PlugBoard></PlugBoard>
+      <RotorNumber>3</RotorNumber>
+      <comment></comment>
+    </machine>
+    <machine>
+      <name>Enigma M3</name>
+      <AllowableRotor></AllowableRotor>
+      <AllowableReflector></AllowableReflector>
+      <PlugBoard></PlugBoard>
+      <Rotorumber></Rotorumber>
+      <comment></comment>
+    </machine>
+    <machine>
+      <name>Enigma M4</name>
+      <AllowableRotor></AllowableRotor>
+      <AllowableReflector></AllowableReflector>
+      <PlugBoard></PlugBoard>
+      <Rotorumber></Rotorumber>
+      <comment></comment>
+    </machine>
+  </MachineList>
+</xml>

@@ -25,6 +25,6 @@ StdAfx.h, StdAfx.cpp
 /////////////////////////////////////////////////////////////////////////////
 Autres remarques :
 
-AppWizard utilise des commentaires "TODO:" pour indiquer les parties du code source où vous devrez ajouter ou modifier du code.
+AppWizard utilise des <comment>aires "TODO:" pour indiquer les parties du code source où vous devrez ajouter ou modifier du code.
 
 /////////////////////////////////////////////////////////////////////////////

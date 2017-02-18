@@ -1,9 +1,10 @@
 #include <iostream>
 
-#include "ConnectionTab.hpp"
+#include "PlugBoard.hpp"
 #include "Rotor.hpp"
-#include "Reflecteur.hpp"
+#include "Reflector.hpp"
 #include "Machine.hpp"
+#include "Enigma.h"
 
 
 using namespace std;
@@ -16,8 +17,8 @@ int main()
     string text(" ");
     string text_c("");
 
-	Machine machineEnigma;
-	machineEnigma.initMachine("I");
+	Enigma machineEnigma;
+	machineEnigma.init();
 
 // configuration de la machine
     char Permutation[2][6]= {{'a','e','c','d','e','f'},{'f','e','d','c','b','a'}};
@@ -49,7 +50,7 @@ int main()
 
 //initialisation de la machine
 // 1 - initialisation du tableau de permutation
-    ConnectionTab connectTab(Permutation);
+    PlugBoard connectTab(Permutation);
 
 // 2 - initialisation du premier rotor
     Rotor rotor1(Ro_I,1,1);
@@ -60,8 +61,8 @@ int main()
 // 4 - initialisation du troisieme rotor
     Rotor rotor3(Ro_III,1,1);
 
-// 5 - initialisation du reflecteur
-    Reflecteur reflecteur(Re_B);
+// 5 - initialisation du Reflector
+    Reflector Reflector(Re_B);
 
 
 
@@ -70,7 +71,7 @@ int main()
 // Zone de test
 //--------------
 // Affichage des tables de correspondance
-//reflecteur.get_permutationTab();
+//Reflector.get_permutationTab();
 //connectTab.get_PermutationTab();
 //rotor1.get_permutationTab();
 //rotor2.get_permutationTab();
@@ -87,6 +88,9 @@ int main()
 
 text = "hello";
 
+Enigma t;
+
+t.init();
 
 
 // pour chaque caractere du texte à chiffrer
@@ -108,7 +112,7 @@ text = "hello";
         char_crypted=rotor2.activate(char_crypted,1);
         char_crypted=rotor3.activate(char_crypted,1);
 		
-		char_crypted=reflecteur.activate(char_crypted);
+		char_crypted=Reflector.activate(char_crypted);
 
         char_crypted=rotor3.activate(char_crypted,-1);
         char_crypted=rotor2.activate(char_crypted,-1);

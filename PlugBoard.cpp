@@ -1,4 +1,4 @@
-#include "ConnectionTab.hpp"
+#include "PlugBoard.hpp"
 #include <map>
 
 using namespace std;
@@ -15,7 +15,7 @@ using namespace std;
 **/
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-ConnectionTab::ConnectionTab()
+PlugBoard::PlugBoard()
 {
     m_permutation['a']='a';
     m_permutation['b']='b';
@@ -54,7 +54,7 @@ ConnectionTab::ConnectionTab()
 **/
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-ConnectionTab::ConnectionTab(char listeInput[2][6])
+PlugBoard::PlugBoard(char listeInput[2][6])
 {
     m_permutation['a']='a';
     m_permutation['b']='b';
@@ -108,7 +108,7 @@ ConnectionTab::ConnectionTab(char listeInput[2][6])
 **/
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-char ConnectionTab::activate(char charToPermute)
+char PlugBoard::activate(char charToPermute)
 {
     return m_permutation[charToPermute];
 }
@@ -127,7 +127,7 @@ char ConnectionTab::activate(char charToPermute)
 **/
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-void ConnectionTab::get_PermutationTab()
+void PlugBoard::get_PermutationTab()
 {
     map<char,char>::iterator p;
 
