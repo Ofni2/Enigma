@@ -4,7 +4,7 @@
 #include "Rotor.hpp"
 #include "Reflector.hpp"
 #include "Machine.hpp"
-#include "Enigma.h"
+#include "Enigma.hpp"
 
 
 using namespace std;
@@ -17,8 +17,6 @@ int main()
     string text(" ");
     string text_c("");
 
-	Enigma machineEnigma;
-	machineEnigma.init();
 
 // configuration de la machine
     char Permutation[2][6]= {{'a','e','c','d','e','f'},{'f','e','d','c','b','a'}};
@@ -31,15 +29,15 @@ int main()
     /* Permutation used by Enigma are defined by usera */
 
     /* Rotor used for Enigma
-    I 	   EKMFLGDQVZNTOWYHXUSPAIBRCJ 	    1930 	    Enigma I
-    II 	   AJDKSIRUXBLHWTMCQGZNPYFVOE 	    1930 	    Enigma I
-    III    BDFHJLCPRTXVZNYEIWGAKMUSQO 	    1930 	    Enigma I
-    IV     ESOVPZJAYQUIRHXLNFTGKDCMWB 	    Dec. 1938 	M3 Army
-    V 	   VZBRGITYUPSDNHLXAWMJQOFECK 	    Dec. 1938 	M3 Army
-    VI     JPGVOUMFYQBENHZRDKASXLICTW 	    1939 	    M3 & M4 Naval (FEB 1942)
-    VII    NZJHGRCXMYSWBOUFAIVLPEKQDT 	    1939 	    M3 & M4 Naval (FEB 1942)
-    VIII   FKQHTLXOCBJSPDZRAMEWNIUYGV
-    */
+    I 	   EKMFLGDQVZNTOWYHXUSPAIBRCJ ekmflgdqvzntowyhxuspaibrcj 	    1930 	    Enigma I
+    II 	   AJDKSIRUXBLHWTMCQGZNPYFVOE ajdksiruxblhwtmcqgznpyfvoe 	    1930 	    Enigma I
+    III    BDFHJLCPRTXVZNYEIWGAKMUSQO bdfhjlcprtxvznyeiwgakmusqo 	    1930 	    Enigma I
+    IV     ESOVPZJAYQUIRHXLNFTGKDCMWB esovpzjayquirhxlnftgkdcmwb 	    Dec. 1938 	M3 Army
+    V 	   VZBRGITYUPSDNHLXAWMJQOFECK vzbrgityupsdnhlxawmjqofeck 	    Dec. 1938 	M3 Army
+    VI     JPGVOUMFYQBENHZRDKASXLICTW jpgvoumfyqbenhzrdkasxlictw 	    1939 	    M3 & M4 Naval (FEB 1942)
+    VII    NZJHGRCXMYSWBOUFAIVLPEKQDT nzjhgrcxmyswboufaivlpekqdt 	    1939 	    M3 & M4 Naval (FEB 1942)
+    VIII   FKQHTLXOCBJSPDZRAMEWNIUYGV fkqhtlxocbjspdzramewniuygv
+	*/
 
     /* Reflector used for Enigma
     reflector B	        (AY) (BR) (CU) (DH) (EQ) (FS) (GL) (IP) (JX) (KN) (MO) (TZ) (VW)
@@ -53,13 +51,13 @@ int main()
     PlugBoard connectTab(Permutation);
 
 // 2 - initialisation du premier rotor
-    Rotor rotor1(Ro_I,1,1);
+    Rotor rotor1("ekmflgdqvzntowyhxuspaibrcj",1,1);
 
 // 3 - initialisation du deuxieme rotor
-    Rotor rotor2(Ro_II,1,1);
+    Rotor rotor2("ajdksiruxblhwtmcqgznpyfvoe",1,1);
 
 // 4 - initialisation du troisieme rotor
-    Rotor rotor3(Ro_III,1,1);
+    Rotor rotor3("bdfhjlcprtxvznyeiwgakmusqo",1,1);
 
 // 5 - initialisation du Reflector
     Reflector Reflector(Re_B);

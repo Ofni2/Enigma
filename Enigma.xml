@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <xml>
+  <!--- ********* LIST OF ROTORS WITH THERE DEFINITION ********* --> 
   <RotorList>
     <rotor>
       <name>I</name>
@@ -50,6 +51,7 @@
       <comment></comment>
     </rotor>
   </RotorList>
+  <!--- ********* LIST OF REFLECTOR WITH THERE DEFINITION ********* -->
   <ReflectorList>
     <reflector>
       <name>B</name>
@@ -72,6 +74,9 @@
       <comment></comment>
     </reflector>
   </ReflectorList>
+  <!--- ********* LIST OF ENIGMA MACHINE *********  -->
+  <!--- to define a machine first define its rotors -->
+  <!--- and its reflector in the previous section   -->
   <MachineList>
     <machine>
       <name>Enigma I</name>

@@ -12,14 +12,17 @@ class Rotor
 public:
     // Constructeur
     Rotor();
-    Rotor(char internalWiring[2][26], const int &ringSetting, const int &startPosition, const char &stepping1 = 'z', const char &stepping2 = ' ', const std::string &name = "noName");
-    // Methodes
+    Rotor(std::string internalWiring, const int &ringSetting, const int &startPosition, const char &stepping1 = 'z', const char &stepping2 = ' ', const std::string &name = "noName");
+    
+	// Methodes
     void get_permutationTab();
 	int get_ringSetting();
 	int get_rotorPosition();
+	std::string get_name();
 
 	void set_rotorPosition(int i);
 	void set_ringSetting(int i);
+	//void set_name(std::string name);
 
     char activate(char charToPermute,int sens=1);
     void rotate(int decalage=0);

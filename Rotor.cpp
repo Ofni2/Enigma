@@ -35,7 +35,7 @@ Rotor::Rotor()
 * Constructeur
 ************************
 **/
-Rotor::Rotor(char internalWiring[2][26], const int &ringSetting, const int &startPosition, const char &stepping1, const char &stepping2, const string &name)
+Rotor::Rotor(string internalWiring, const int &ringSetting, const int &startPosition, const char &stepping1, const char &stepping2, const string &name)
 {
 		m_name = name;
 
@@ -48,8 +48,8 @@ Rotor::Rotor(char internalWiring[2][26], const int &ringSetting, const int &star
 
 		for (int i(0); i < 26; ++i)
 		{
-			m_internalWiringTab[0][i] = internalWiring[0][i];
-			m_internalWiringTab[1][i] = internalWiring[1][i];
+			m_internalWiringTab[0][i] = i+97;
+			m_internalWiringTab[1][i] = internalWiring[i];
 		}
 }
 
@@ -233,4 +233,9 @@ int Rotor::isValidChar(char c)
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {return 0;	}
 
 	return -1;
+}
+
+string Rotor::get_name()
+{
+	return m_name;
 }
