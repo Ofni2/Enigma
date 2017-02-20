@@ -7,20 +7,23 @@
 
 #include "Rotor.hpp"
 #include "Reflector.hpp"
+#include "PlugBoard.hpp"
 
 
 class Machine
 {
     public:
+		Machine();
+
         Machine(std::string name,
 				std::map<std::string, Rotor> availableRotor,
 				std::map<std::string, Reflector> availableReflector,
 				int rotorMumber,
-				std::vector<std::string> usedPlugboard);
+				PlugBoard usedPlugboard);
 
         ~Machine();
 		
-		void initMachine(std::string name);
+		char initMachine(char c);
 
 
     protected:
@@ -34,7 +37,7 @@ class Machine
 		
 		std::vector<std::string> m_usedRotor;
 		std::string m_usedReflector;
-		std::vector<std::string> m_usedPlugboard;
+		PlugBoard m_usedPlugboard;
 
     private:
 

@@ -5,11 +5,16 @@
 
 using namespace std;
 
+Machine::Machine()
+{
+
+}
+
 Machine::Machine(string name,
 				 map<string,Rotor> availableRotor,
 				 map<string, Reflector> availableReflector,
 				 int rotorMumber,
-				 vector<string> usedPlugboard)
+				 PlugBoard usedPlugboard)
 {
 	m_name = name;
 	m_availableRotor = availableRotor;
@@ -24,8 +29,7 @@ Machine::Machine(string name,
 
 	myIt_begin = availableRotor.begin();
 	myIt_end = myIt_begin;
-
-	for (int i(0); i < rotorMumber; i++) ++myIt_end;
+	std::advance(myIt_end, rotorMumber);
 
 	for (myIt_begin; myIt_begin != myIt_end; ++myIt_begin)
 	{
@@ -42,9 +46,29 @@ Machine::~Machine()
     //dtor
 }
 
-void Machine::initMachine(string name)
+char Machine::initMachine(char char_to_crypt)
 {
+	char char_crypted;
+	
+	// Sequence de cryptage d'un caractere
+	//char_crypted = connectTab.activate(char_to_crypt);
+	char_crypted = char_to_crypt;
+	char_crypted = m_availableRotor[m_usedRotor[0]].activate(char_crypted, 1);
+	char_crypted = m_availableRotor[m_usedRotor[1]].activate(char_crypted, 1);
+	char_crypted = m_availableRotor[m_usedRotor[2]].activate(char_crypted, 1);
 
+	char_crypted = m_availableReflector[m_usedReflector].activate(char_crypted);
+
+	char_crypted = m_availableRotor[m_usedRotor[2]].activate(char_crypted, -1);
+	char_crypted = m_availableRotor[m_usedRotor[1]].activate(char_crypted, -1);
+	char_crypted = m_availableRotor[m_usedRotor[0]].activate(char_crypted, -1);
+
+	//char_crypted = connectTab.activate(char_crypted);
+
+	m_availableRotor[m_usedRotor[0]].rotate(-1);
+
+
+	return char_crypted;
 
 
 }

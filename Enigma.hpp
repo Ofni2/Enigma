@@ -21,6 +21,8 @@ public:
 
 	void init();
 
+	Machine get_machine(std::string name);
+
 
 
 protected:

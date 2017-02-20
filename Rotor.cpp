@@ -49,7 +49,7 @@ Rotor::Rotor(string internalWiring, const int &ringSetting, const int &startPosi
 		for (int i(0); i < 26; ++i)
 		{
 			m_internalWiringTab[0][i] = i+97;
-			m_internalWiringTab[1][i] = internalWiring[i];
+			m_internalWiringTab[1][i] = internalWiring[i]+32;
 		}
 }
 

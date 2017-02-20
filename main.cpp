@@ -24,7 +24,7 @@ int main()
     char Ro_II[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'a','j','d','k','s','i','r','u','x','b','l','h','w','t','m','c','q','g','z','n','p','y','f','v','o','e'}};
     char Ro_III[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'b','d','f','h','j','l','c','p','r','t','x','v','z','n','y','e','i','w','g','a','k','m','u','s','q','o'}};
     //char Re_B[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'y','r','u','h','q','s','l','d','p','x','n','g','o','k','m','i','e','b','f','z','c','w','v','j','a','t'}};
-	char Re_B[2][13] = { { 'a','b','c','d','e','f','g','i','j','k','m','t','v'},{ 'y','r','u','h','q','s','l','p','x','n','o','z','w'} };
+	char Re_B[2][13] = { { 'A','B','C','D','E','F','G','H','I','J','K','M','L'},{ 'Y','R','U','H','Q','S','L','P','X','N','O','Z','W'} };
 
 
     /* Permutation used by Enigma are defined by usera */
@@ -52,13 +52,13 @@ int main()
     PlugBoard connectTab(Permutation);
 
 // 2 - initialisation du premier rotor
-    Rotor rotor1("ekmflgdqvzntowyhxuspaibrcj",1,1);
+    Rotor rotor1("EKMFLGDQVZNTOWYHXUSPAIBRCJ",1,1);
 
 // 3 - initialisation du deuxieme rotor
-    Rotor rotor2("ajdksiruxblhwtmcqgznpyfvoe",1,1);
+    Rotor rotor2("AJDKSIRUXBLHWTMCQGZNPYFVOE",1,1);
 
 // 4 - initialisation du troisieme rotor
-    Rotor rotor3("bdfhjlcprtxvznyeiwgakmusqo",1,1);
+    Rotor rotor3("BDFHJLCPRTXVZNYEIWGAKMUSQO",1,1);
 
 // 5 - initialisation du Reflector
     Reflector Reflector("noname",Re_B);
@@ -85,57 +85,32 @@ int main()
 //				Plug pairs : AN EZ HK IJ LR MQ OT PV SW UX
 //           	Message key : UZV
 
-text = "hello";
+text = "HELLO";
 
 Enigma t;
+Machine M;
 
 t.init();
+M=t.get_machine("Enigma I");
 
+int textSize(text.size());
+for (int i(0); i<textSize; i++)
+{
+	if (text[i] == ' ')
+	{
+		text_c = text_c + ' ';
+		continue;
+	}
 
-// pour chaque caractere du texte à chiffrer
-	int textSize(text.size());
-    for (int i(0); i<textSize; i++)
-    {
-        if (text[i]==' ')
-        {
-            text_c=text_c+' ';
-            continue;
-        }
+	char_crypted = connectTab.activate(text[i]);
+	char_crypted=M.initMachine(char_crypted);
+	char_crypted = connectTab.activate(char_crypted);
+	text_c = text_c + char_crypted;
 
-        // Sequence de cryptage d'un caractere
-        char_to_crypt=text[i];
+}
 
-        char_crypted=connectTab.activate(char_to_crypt);
-        
-		char_crypted=rotor1.activate(char_crypted,1);
-        char_crypted=rotor2.activate(char_crypted,1);
-        char_crypted=rotor3.activate(char_crypted,1);
-		
-		char_crypted=Reflector.activate(char_crypted);
-
-        char_crypted=rotor3.activate(char_crypted,-1);
-        char_crypted=rotor2.activate(char_crypted,-1);
-        char_crypted=rotor1.activate(char_crypted,-1);
-        
-		char_crypted=connectTab.activate(char_crypted);
-
-        rotor1.rotate(-1);
-
-
-        if ((i)%26==0 && i!=0)
-        {
-          rotor2.rotate(-1);
-          j=j+1;
-          if (j%26==0)
-          {
-              rotor3.rotate(-1);
-          }
-        }
-
-        text_c=text_c+char_crypted;
-    }
-
-    cout<<"RESULTAT ---> "<< text_c <<endl;
+cout << "RESULTAT ---> " << text_c << endl;
+ 
 
 
     return 0;
