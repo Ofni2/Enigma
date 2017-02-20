@@ -12,7 +12,7 @@ class Reflector
 public:
     // Constructeur
     Reflector();
-    Reflector(char listPermutation[2][26]);
+    Reflector(std::string name,char listPermutation[2][13]);
 
     // Methodes
     void get_permutationTab();
@@ -20,6 +20,7 @@ public:
 
 private :
     // Attriubuts
+	std::string m_name;
     std::map<char,char> m_permutationReflector;
 
 };

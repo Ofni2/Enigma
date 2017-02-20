@@ -13,6 +13,15 @@ using namespace std;
 **/
 Reflector::Reflector()
 {
+	char c;
+
+	for (int i(0); i<26; ++i)
+	{
+		c = i + 97;
+		m_permutationReflector[c] = c;
+	}
+	m_name = "none";
+
 }
 //--------------------------------------------------------------
 //--------------------------------------------------------------
@@ -28,13 +37,14 @@ Reflector::Reflector()
 **/
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-Reflector::Reflector(char listPermutation[2][26])
+Reflector::Reflector(string name,char listPermutation[2][13])
 {
-    for (int i(0); i<26; ++i)
+    for (int i(0); i<13; ++i)
     {
         m_permutationReflector[listPermutation[0][i]]=listPermutation[1][i];
         m_permutationReflector[listPermutation[1][i]]=listPermutation[0][i];
     }
+	m_name = name;
 }
 
 /**

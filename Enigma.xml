@@ -88,18 +88,18 @@
     </machine>
     <machine>
       <name>Enigma M3</name>
-      <AllowableRotor></AllowableRotor>
-      <AllowableReflector></AllowableReflector>
+      <AllowableRotor>I,II,III</AllowableRotor>
+      <AllowableReflector>B</AllowableReflector>
       <PlugBoard></PlugBoard>
-      <Rotorumber></Rotorumber>
+      <RotorNumber>3</RotorNumber>
       <comment></comment>
     </machine>
     <machine>
       <name>Enigma M4</name>
-      <AllowableRotor></AllowableRotor>
-      <AllowableReflector></AllowableReflector>
+      <AllowableRotor>I,II,III</AllowableRotor>
+      <AllowableReflector>B</AllowableReflector>
       <PlugBoard></PlugBoard>
-      <Rotorumber></Rotorumber>
+      <RotorNumber>3</RotorNumber>
       <comment></comment>
     </machine>
   </MachineList>

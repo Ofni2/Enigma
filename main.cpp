@@ -23,7 +23,8 @@ int main()
     char Ro_I[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'e','k','m','f','l','g','d','q','v','z','n','t','o','w','y','h','x','u','s','p','a','i','b','r','c','j'}};
     char Ro_II[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'a','j','d','k','s','i','r','u','x','b','l','h','w','t','m','c','q','g','z','n','p','y','f','v','o','e'}};
     char Ro_III[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'b','d','f','h','j','l','c','p','r','t','x','v','z','n','y','e','i','w','g','a','k','m','u','s','q','o'}};
-    char Re_B[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'y','r','u','h','q','s','l','d','p','x','n','g','o','k','m','i','e','b','f','z','c','w','v','j','a','t'}};
+    //char Re_B[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'y','r','u','h','q','s','l','d','p','x','n','g','o','k','m','i','e','b','f','z','c','w','v','j','a','t'}};
+	char Re_B[2][13] = { { 'a','b','c','d','e','f','g','i','j','k','m','t','v'},{ 'y','r','u','h','q','s','l','p','x','n','o','z','w'} };
 
 
     /* Permutation used by Enigma are defined by usera */
@@ -60,7 +61,7 @@ int main()
     Rotor rotor3("bdfhjlcprtxvznyeiwgakmusqo",1,1);
 
 // 5 - initialisation du Reflector
-    Reflector Reflector(Re_B);
+    Reflector Reflector("noname",Re_B);
 
 
 

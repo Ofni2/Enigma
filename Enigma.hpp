@@ -3,6 +3,13 @@
 
 #include <map>
 #include <string>
+#include <fstream>
+#include <iostream>
+#include <vector>
+
+#include "Rotor.hpp"
+#include "Reflector.hpp"
+#include "Machine.hpp"
 
 class Enigma
 {
@@ -15,14 +22,15 @@ public:
 	void init();
 
 
+
 protected:
 
 
 
 private:
-	std::map<int, std::string> m_availableMachine;
-	std::map<int, std::string> m_availableRotor;
-	std::map<int, std::string> m_availableReflector;
+	std::map<std::string, Machine> m_availableMachine;
+	std::map<std::string, Rotor> m_availableRotor;
+	std::map<std::string, Reflector> m_availableReflector;
 };
 
 

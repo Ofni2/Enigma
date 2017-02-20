@@ -13,7 +13,7 @@ public:
 
 //constructeur
 PlugBoard();
-PlugBoard(char liste[2][6]);
+PlugBoard(char list[2][6]);
 
 //methode
 void get_PermutationTab();
