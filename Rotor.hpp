@@ -15,9 +15,11 @@ public:
     Rotor(std::string internalWiring, const int &ringSetting, const int &startPosition, const char &stepping1 = 'z', const char &stepping2 = ' ', const std::string &name = "noName");
     
 	// Methodes
-    void get_permutationTab();
+    void DisplayPermutationTab();
 	int get_ringSetting();
 	int get_rotorPosition();
+	char get_stepping1();
+	char get_stepping2();
 	std::string get_name();
 
 	void set_rotorPosition(int i);

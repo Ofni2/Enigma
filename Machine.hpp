@@ -24,6 +24,12 @@ class Machine
         ~Machine();
 		
 		char initMachine(char c);
+		char activate(char charToCrype);
+
+		void initStartPosition(int rotorIndex, int postion);
+		void initRingSetting(int rotorIndex, int setting);
+
+		void setRotor(std::string rotorName, int position);
 
 
     protected:

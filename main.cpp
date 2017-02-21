@@ -19,15 +19,8 @@ int main()
 
 
 // configuration de la machine
-    char Permutation[2][6]= {{'a','e','c','d','e','f'},{'f','e','d','c','b','a'}};
-    char Ro_I[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'e','k','m','f','l','g','d','q','v','z','n','t','o','w','y','h','x','u','s','p','a','i','b','r','c','j'}};
-    char Ro_II[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'a','j','d','k','s','i','r','u','x','b','l','h','w','t','m','c','q','g','z','n','p','y','f','v','o','e'}};
-    char Ro_III[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'b','d','f','h','j','l','c','p','r','t','x','v','z','n','y','e','i','w','g','a','k','m','u','s','q','o'}};
-    //char Re_B[2][26]= {{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'},{'y','r','u','h','q','s','l','d','p','x','n','g','o','k','m','i','e','b','f','z','c','w','v','j','a','t'}};
-	char Re_B[2][13] = { { 'A','B','C','D','E','F','G','H','I','J','K','M','L'},{ 'Y','R','U','H','Q','S','L','P','X','N','O','Z','W'} };
-
-
-    /* Permutation used by Enigma are defined by usera */
+   
+    /* Permutation used by Enigma are defined by user */
 
     /* Rotor used for Enigma
     I 	   EKMFLGDQVZNTOWYHXUSPAIBRCJ ekmflgdqvzntowyhxuspaibrcj 	    1930 	    Enigma I
@@ -49,19 +42,10 @@ int main()
 
 //initialisation de la machine
 // 1 - initialisation du tableau de permutation
-    PlugBoard connectTab(Permutation);
-
 // 2 - initialisation du premier rotor
-    Rotor rotor1("EKMFLGDQVZNTOWYHXUSPAIBRCJ",1,1);
-
 // 3 - initialisation du deuxieme rotor
-    Rotor rotor2("AJDKSIRUXBLHWTMCQGZNPYFVOE",1,1);
-
 // 4 - initialisation du troisieme rotor
-    Rotor rotor3("BDFHJLCPRTXVZNYEIWGAKMUSQO",1,1);
-
 // 5 - initialisation du Reflector
-    Reflector Reflector("noname",Re_B);
 
 
 
@@ -69,12 +53,6 @@ int main()
 //--------------
 // Zone de test
 //--------------
-// Affichage des tables de correspondance
-//Reflector.get_permutationTab();
-//connectTab.get_PermutationTab();
-//rotor1.get_permutationTab();
-//rotor2.get_permutationTab();
-//rotor3.get_permutationTab();
 
 
 //text="YKAE NZAP MSCH ZBFO CUVM RMDP YCOF HADZ IZME FXTH FLOL PZLF GGBO TGOX GRET DWTJ IQHL MXVJ WKZU ASTR"*
@@ -89,9 +67,31 @@ text = "HELLO";
 
 Enigma t;
 Machine M;
+PlugBoard P;
+
 
 t.init();
+
 M=t.get_machine("Enigma I");
+
+
+M.setRotor("V", 1);
+M.setRotor("II", 2);
+M.setRotor("I", 3);
+
+
+
+M.initRingSetting(1, 14);
+M.initRingSetting(2, 22);
+M.initRingSetting(3, 6);
+
+M.initStartPosition(1, 2);
+M.initStartPosition(2, 23);
+M.initStartPosition(3, 24);
+
+
+text = "QBLTWLDAHHYEOEFPTWYBLENDPMKOXLDFAMUDWIJDXRJZ";
+//solution = DERFU EHRER ISTTO DXDER KAMPF GEHTW EITER XDOEN ITZX
 
 int textSize(text.size());
 for (int i(0); i<textSize; i++)
@@ -102,9 +102,7 @@ for (int i(0); i<textSize; i++)
 		continue;
 	}
 
-	char_crypted = connectTab.activate(text[i]);
-	char_crypted=M.initMachine(char_crypted);
-	char_crypted = connectTab.activate(char_crypted);
+	char_crypted=M.activate(text[i]);
 	text_c = text_c + char_crypted;
 
 }

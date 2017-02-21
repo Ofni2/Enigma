@@ -15,7 +15,7 @@ public:
     Reflector(std::string name,char listPermutation[2][13]);
 
     // Methodes
-    void get_permutationTab();
+    void DisplayPermutationTab();
     char activate(char charToPermute);
 
 private :

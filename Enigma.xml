@@ -55,7 +55,7 @@
   <ReflectorList>
     <reflector>
       <name>B</name>
-      <wirring>AY,BR,CU,DH,EQ,FS,GL,IP,JX,KN,MO,TZ,VW</wirring>
+      <wirring>ay,br,CU,DH,EQ,FS,GL,IP,JX,KN,MO,TZ,VW</wirring>
       <comment></comment>
     </reflector>
     <reflector>
@@ -82,7 +82,7 @@
       <name>Enigma I</name>
       <AllowableRotor>I,II,III,IV,V,VI,VII,VII</AllowableRotor>
       <AllowableReflector>B,C</AllowableReflector>
-      <PlugBoard></PlugBoard>
+      <PlugBoard>PO,ML,IU,KJ,NH,YT,GB,VF,RE,DC</PlugBoard>
       <RotorNumber>3</RotorNumber>
       <comment></comment>
     </machine>

@@ -18,13 +18,13 @@ Rotor::Rotor()
 	m_startPosition = 1;
 	m_position = 0;
 
-	m_steppingPosition1 = 'z';
+	m_steppingPosition1 = 'Z';
 	m_steppingPosition2 = ' ';
 	
 	for (int i(0); i < 26; ++i)
 	{
-		m_internalWiringTab[0][i] = 97+i;
-		m_internalWiringTab[1][i] = 97+i;
+		m_internalWiringTab[0][i] = 64+i;
+		m_internalWiringTab[1][i] = 64+i;
 	}
 }
 
@@ -43,13 +43,22 @@ Rotor::Rotor(string internalWiring, const int &ringSetting, const int &startPosi
 		m_startPosition = startPosition;
 		m_position = 0;
 
-		m_steppingPosition1 = stepping1;
-		m_steppingPosition2 = stepping2;
+		if ((stepping1 >= 'a' && stepping1 <= 'z'))	    { m_steppingPosition1 = stepping1 - 32;}
+		else if ((stepping1 >= 'A' && stepping1 <= 'Z')){ m_steppingPosition1 = stepping1;     }
+		else {	/* Throw exception*/ }
+
+
+		if ((stepping2 >= 'a' && stepping2 <= 'z'))		{ m_steppingPosition2 = stepping2 - 32;}
+		else if ((stepping2 >= 'A' && stepping2 <= 'Z')){ m_steppingPosition2 = stepping2;	   }
+		else {	/* Throw exception*/ }
 
 		for (int i(0); i < 26; ++i)
 		{
-			m_internalWiringTab[0][i] = i+97;
-			m_internalWiringTab[1][i] = internalWiring[i]+32;
+			m_internalWiringTab[0][i] = i+65;
+			
+			if ((internalWiring[i] >= 'a' && internalWiring[i] <= 'z'))	     { m_internalWiringTab[1][i] = internalWiring[i] - 32; }
+			else if ((internalWiring[i] >= 'A' && internalWiring[i] <= 'Z')) { m_internalWiringTab[1][i] = internalWiring[i];	   }
+			else { /*Throw exception: init rotor initialisation pb */}
 		}
 }
 
@@ -62,46 +71,51 @@ Rotor::Rotor(string internalWiring, const int &ringSetting, const int &startPosi
 * de la variable "sens"
 *
 * @param[in]   sens          : indique dans quel sens lire la table de correspondance
-* @param[in]   charToPermute : charactere à crypter
-* @param[out]  charPermuted  : charactere crypté
+* @param[in]   charToPermute : charactere à chiffrer
+* @param[out]  charPermuted  : charactere chiffrer
 *
 *************************************************************************************
 **/
 char Rotor::activate(char charToPermute,int sens)
 {
     char charPermuted(' ');
-	int offset,index;
-
+	int offset,index(0);
+	
+	//transform input char into an integer between 1 and 26 (a=1, ... ,Z=26)
+	if ((charToPermute >= 'a' && charToPermute <= 'z')) { charToPermute = charToPermute - 96; }
+	else if ((charToPermute >= 'A' && charToPermute <= 'Z')) { charToPermute = charToPermute - 64; }
+	else { /*throw exception*/}
+		
     switch (sens)
     {
         case 1:
 
-			offset = m_startPosition - (m_ringSetting + m_position) + (charToPermute - 96) - 1 ;
+
+			offset = m_startPosition - (m_ringSetting + m_position) + (charToPermute) - 1 ;
 			if (offset < 0) { offset = 26 - offset; }
 			charPermuted = offset % 26 + 1;
 
-			for (int i(0); i<26; i++) {
-				if (m_internalWiringTab[0][i] == (charPermuted + 96)) { index = i; } }
+			for (int i(0); i < 26; i++) {if ((m_internalWiringTab[0][i]) == (charPermuted+64)) { index = i; break; }}
 
-			charPermuted = m_internalWiringTab[1][index] - 96;
+			charPermuted = m_internalWiringTab[1][index]-64;
 			offset = -m_startPosition + (m_ringSetting + m_position) + charPermuted - 1;
 			if (offset < 0) { offset = 26 + offset; }
-			charPermuted = offset % 26 + 1 + 96;
+			charPermuted = offset % 26 + 1 + 64;
 
             break;
 
         case -1:
 
-			offset = m_startPosition - (m_ringSetting + m_position) + (charToPermute - 96) - 1 ;
+			offset = m_startPosition - (m_ringSetting + m_position) + (charToPermute) - 1 ;
 			if (offset < 0) { offset = 26 - offset; }
 			charPermuted = offset % 26 + 1;
 
-			for (int i(0); i<26; i++) { if (m_internalWiringTab[1][i] == (charPermuted + 96)) { index = i; } }
+			for (int i(0); i < 26; i++) { if (m_internalWiringTab[1][i] == (charPermuted + 64)) { index = i; break; } }
 
-			charPermuted = m_internalWiringTab[0][index] - 96;
+			charPermuted = m_internalWiringTab[0][index]-64;//-64
 			offset = -m_startPosition + (m_ringSetting + m_position) + charPermuted - 1;
 			if (offset < 0) { offset = 26 + offset; }
-			charPermuted = offset % 26 + 1 + 96;
+			charPermuted = offset % 26 + 1 + 64;
 
             break;
     }
@@ -117,7 +131,7 @@ char Rotor::activate(char charToPermute,int sens)
 *
 *************************************************************************************
 **/
-void Rotor::get_permutationTab()
+void Rotor::DisplayPermutationTab()
 {
     cout<<endl<<"voici la table de permutation"<<endl;
 
@@ -143,10 +157,12 @@ void Rotor::rotate(int decalage)
 
 	case -1:
 		m_position--;
+		//m_startPosition++;
 		break;
 
 	case 1:
 		m_position++;
+		//m_startPosition--;
 		break;
 
 	case 0:
@@ -238,4 +254,14 @@ int Rotor::isValidChar(char c)
 string Rotor::get_name()
 {
 	return m_name;
+}
+
+char Rotor::get_stepping1()
+{
+	return m_steppingPosition1;
+}
+
+char Rotor::get_stepping2()
+{
+	return m_steppingPosition2;
 }

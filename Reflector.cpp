@@ -13,13 +13,7 @@ using namespace std;
 **/
 Reflector::Reflector()
 {
-	char c;
-
-	for (int i(0); i<26; ++i)
-	{
-		c = i + 97;
-		m_permutationReflector[c] = c;
-	}
+	for (int i(0); i<26; ++i) {	m_permutationReflector[i + 65] = i + 65;}
 	m_name = "none";
 
 }
@@ -41,7 +35,13 @@ Reflector::Reflector(string name,char listPermutation[2][13])
 {
     for (int i(0); i<13; ++i)
     {
-        m_permutationReflector[listPermutation[0][i]]=listPermutation[1][i];
+
+
+		if ((listPermutation[0][i] >= 'a' && listPermutation[0][i] <= 'z')) {listPermutation[0][i] = listPermutation[0][i] - 32;}
+		if ((listPermutation[1][i] >= 'a' && listPermutation[1][i] <= 'z')) { listPermutation[1][i] = listPermutation[1][i] - 32; }
+		//else 	/*Throw exception: initor initialisation pb */
+		
+		m_permutationReflector[listPermutation[0][i]]=listPermutation[1][i];
         m_permutationReflector[listPermutation[1][i]]=listPermutation[0][i];
     }
 	m_name = name;
@@ -71,7 +71,7 @@ return m_permutationReflector[charToPermute];
 **/
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-void Reflector::get_permutationTab()
+void Reflector::DisplayPermutationTab()
 {
     map<char,char>::iterator p;
     cout<<"voici la table de permutation du Reflector"<<endl;

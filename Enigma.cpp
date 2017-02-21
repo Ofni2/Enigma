@@ -11,7 +11,6 @@ using boost::property_tree::ptree;
 
 Enigma::Enigma()
 {
-
 }
 
 Enigma::~Enigma()
@@ -23,6 +22,8 @@ Machine Enigma::get_machine(std::string name)
 {
 	return m_availableMachine[name];
 }
+
+
 
 void Enigma::init()
 {

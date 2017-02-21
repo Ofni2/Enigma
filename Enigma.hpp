@@ -25,6 +25,9 @@ public:
 
 
 
+
+
+
 protected:
 
 
@@ -33,6 +36,7 @@ private:
 	std::map<std::string, Machine> m_availableMachine;
 	std::map<std::string, Rotor> m_availableRotor;
 	std::map<std::string, Reflector> m_availableReflector;
+
 };
 
 

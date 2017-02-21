@@ -17,32 +17,32 @@ using namespace std;
 //--------------------------------------------------------------
 PlugBoard::PlugBoard()
 {
-    m_permutation['a']='a';
-    m_permutation['b']='b';
-    m_permutation['c']='c';
-    m_permutation['d']='d';
-    m_permutation['e']='e';
-    m_permutation['f']='f';
-    m_permutation['g']='g';
-    m_permutation['h']='h';
-    m_permutation['i']='i';
-    m_permutation['j']='j';
-    m_permutation['k']='k';
-    m_permutation['l']='l';
-    m_permutation['m']='m';
-    m_permutation['n']='n';
-    m_permutation['o']='o';
-    m_permutation['p']='p';
-    m_permutation['q']='q';
-    m_permutation['r']='r';
-    m_permutation['s']='s';
-    m_permutation['t']='t';
-    m_permutation['u']='u';
-    m_permutation['v']='v';
-    m_permutation['w']='w';
-    m_permutation['x']='x';
-    m_permutation['y']='y';
-    m_permutation['z']='z';
+    m_permutation['A']='A';
+    m_permutation['B']='B';
+    m_permutation['C']='C';
+    m_permutation['D']='D';
+    m_permutation['E']='E';
+    m_permutation['F']='F';
+    m_permutation['G']='G';
+    m_permutation['H']='H';
+    m_permutation['I']='I';
+    m_permutation['J']='J';
+    m_permutation['K']='K';
+    m_permutation['L']='L';
+    m_permutation['M']='M';
+    m_permutation['N']='N';
+    m_permutation['O']='O';
+    m_permutation['P']='P';
+    m_permutation['Q']='Q';
+    m_permutation['R']='R';
+    m_permutation['S']='S';
+    m_permutation['T']='T';
+    m_permutation['U']='U';
+    m_permutation['V']='V';
+    m_permutation['W']='W';
+    m_permutation['X']='X';
+    m_permutation['Y']='Y';
+    m_permutation['Z']='Z';
 }
 
 //--------------------------------------------------------------
@@ -56,35 +56,39 @@ PlugBoard::PlugBoard()
 //--------------------------------------------------------------
 PlugBoard::PlugBoard(char listeInput[2][6])
 {
-    m_permutation['a']='a';
-    m_permutation['b']='b';
-    m_permutation['c']='c';
-    m_permutation['d']='d';
-    m_permutation['e']='e';
-    m_permutation['f']='f';
-    m_permutation['g']='g';
-    m_permutation['h']='h';
-    m_permutation['i']='i';
-    m_permutation['j']='j';
-    m_permutation['k']='k';
-    m_permutation['l']='l';
-    m_permutation['m']='m';
-    m_permutation['n']='n';
-    m_permutation['o']='o';
-    m_permutation['p']='p';
-    m_permutation['q']='q';
-    m_permutation['r']='r';
-    m_permutation['s']='s';
-    m_permutation['t']='t';
-    m_permutation['u']='u';
-    m_permutation['v']='v';
-    m_permutation['w']='w';
-    m_permutation['x']='x';
-    m_permutation['y']='y';
-    m_permutation['z']='z';
+	m_permutation['A'] = 'A';
+	m_permutation['B'] = 'B';
+	m_permutation['C'] = 'C';
+	m_permutation['D'] = 'D';
+	m_permutation['E'] = 'E';
+	m_permutation['F'] = 'F';
+	m_permutation['G'] = 'G';
+	m_permutation['H'] = 'H';
+	m_permutation['I'] = 'I';
+	m_permutation['J'] = 'J';
+	m_permutation['K'] = 'K';
+	m_permutation['L'] = 'L';
+	m_permutation['M'] = 'M';
+	m_permutation['N'] = 'N';
+	m_permutation['O'] = 'O';
+	m_permutation['P'] = 'P';
+	m_permutation['Q'] = 'Q';
+	m_permutation['R'] = 'R';
+	m_permutation['S'] = 'S';
+	m_permutation['T'] = 'T';
+	m_permutation['U'] = 'U';
+	m_permutation['V'] = 'V';
+	m_permutation['W'] = 'W';
+	m_permutation['X'] = 'X';
+	m_permutation['Y'] = 'Y';
+	m_permutation['Z'] = 'Z';
 
     for (int i(0); i<6; ++i)
     {
+		if ((listeInput[0][i] >= 'a' && listeInput[0][i] <= 'z')) { listeInput[0][i] = listeInput[0][i] - 32; }
+		if ((listeInput[1][i] >= 'a' && listeInput[1][i] <= 'z')) { listeInput[1][i] = listeInput[1][i] - 32; }
+		//else 	/*Throw exception: initor initialisation pb */
+
         m_permutation[listeInput[0][i]]=listeInput[1][i];
         m_permutation[listeInput[1][i]]=listeInput[0][i];
     }
@@ -110,7 +114,19 @@ PlugBoard::PlugBoard(char listeInput[2][6])
 //--------------------------------------------------------------
 char PlugBoard::activate(char charToPermute)
 {
-    return m_permutation[charToPermute];
+	/*
+	char charPermuted(' ');
+
+	if ((charToPermute >= 'A' && charToPermute <= 'Z') || (charToPermute >= 'a' && charToPermute <= 'z'))
+	{
+		charPermuted = m_permutation[charToPermute];
+		if (charPermuted = ' ') charPermuted = charToPermute;
+	 }
+
+    return charPermuted ;
+	*/
+
+	return m_permutation[charToPermute];
 }
 
 
@@ -127,7 +143,7 @@ char PlugBoard::activate(char charToPermute)
 **/
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-void PlugBoard::get_PermutationTab()
+void PlugBoard::DisplayPermutationTab()
 {
     map<char,char>::iterator p;
 

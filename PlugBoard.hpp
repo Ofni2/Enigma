@@ -11,18 +11,18 @@ class PlugBoard
 
 public:
 
-//constructeur
-PlugBoard();
-PlugBoard(char list[2][6]);
+	//constructeur
+	PlugBoard();
+	PlugBoard(char list[2][6]);
 
-//methode
-void get_PermutationTab();
-char activate(char charToPermute);
+	//methode
+	void DisplayPermutationTab();
+	char activate(char charToPermute);
 
 
 private:
 
-std::map<char,char> m_permutation;
+	std::map<char,char> m_permutation;
 
 
 };
