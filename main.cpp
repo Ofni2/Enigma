@@ -67,7 +67,7 @@ text = "HELLO";
 
 Enigma t;
 Machine M;
-PlugBoard P;
+
 
 
 t.init();
@@ -79,6 +79,14 @@ M.setRotor("V", 1);
 M.setRotor("II", 2);
 M.setRotor("I", 3);
 
+M.initRingSetting(1, 14);
+M.initRingSetting(2, 1);
+M.initRingSetting(3, 1);
+
+M.initStartPosition(1, 2);
+M.initStartPosition(2, 23);
+M.initStartPosition(3, 24);
+/*
 
 
 M.initRingSetting(1, 14);
@@ -88,9 +96,8 @@ M.initRingSetting(3, 6);
 M.initStartPosition(1, 2);
 M.initStartPosition(2, 23);
 M.initStartPosition(3, 24);
-
-
-text = "QBLTWLDAHHYEOEFPTWYBLENDPMKOXLDFAMUDWIJDXRJZ";
+*/
+//text = "QBLTWLDAHHYEOEFPTWYBLENDPMKOXLDFAMUDWIJDXRJZ";
 //solution = DERFU EHRER ISTTO DXDER KAMPF GEHTW EITER XDOEN ITZX
 
 int textSize(text.size());

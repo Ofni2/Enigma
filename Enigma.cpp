@@ -130,11 +130,14 @@ void Enigma::init()
 				Mreflec[*tok_iter] = m_availableReflector[*tok_iter];
 			}
 
-			char Mplug[2][6];
+			char Mplug[2][13];
 
+			i = 0;
 			for (tokenizer::iterator tok_iter = plugboardsTokens.begin(); tok_iter != plugboardsTokens.end(); ++tok_iter)
 			{
-				Mplug[0][(*tok_iter)[0]] = Mplug[1][ (*tok_iter)[1] ];
+				Mplug[0][i] = (*tok_iter)[0];
+				Mplug[1][i] = (*tok_iter)[1];
+				i++;
 			}
 
 

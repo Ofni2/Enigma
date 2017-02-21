@@ -54,7 +54,7 @@ PlugBoard::PlugBoard()
 **/
 //--------------------------------------------------------------
 //--------------------------------------------------------------
-PlugBoard::PlugBoard(char listeInput[2][6])
+PlugBoard::PlugBoard(char listeInput[2][13])
 {
 	m_permutation['A'] = 'A';
 	m_permutation['B'] = 'B';
@@ -83,7 +83,7 @@ PlugBoard::PlugBoard(char listeInput[2][6])
 	m_permutation['Y'] = 'Y';
 	m_permutation['Z'] = 'Z';
 
-    for (int i(0); i<6; ++i)
+    for (int i(0); i<13; ++i)
     {
 		if ((listeInput[0][i] >= 'a' && listeInput[0][i] <= 'z')) { listeInput[0][i] = listeInput[0][i] - 32; }
 		if ((listeInput[1][i] >= 'a' && listeInput[1][i] <= 'z')) { listeInput[1][i] = listeInput[1][i] - 32; }

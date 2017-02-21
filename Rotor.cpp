@@ -156,13 +156,13 @@ void Rotor::rotate(int decalage)
 	{
 
 	case -1:
-		m_position--;
-		//m_startPosition++;
+		//m_position--;
+		m_startPosition++;
 		break;
 
 	case 1:
-		m_position++;
-		//m_startPosition--;
+		//m_position++;
+		m_startPosition--;
 		break;
 
 	case 0:
