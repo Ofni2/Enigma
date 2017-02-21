@@ -66,12 +66,12 @@ Rotor::Rotor(string internalWiring, const int &ringSetting, const int &startPosi
 
 /**
 *************************************************************************************
-* Methode pour transformer un caratere à partir d'un table de correspondance
-* la table peut etre lue de gauche à droite ou de droite à gauche en fonction
+* Methode pour transformer un caratere Ã  partir d'un table de correspondance
+* la table peut etre lue de gauche Ã  droite ou de droite Ã  gauche en fonction
 * de la variable "sens"
 *
 * @param[in]   sens          : indique dans quel sens lire la table de correspondance
-* @param[in]   charToPermute : charactere à chiffrer
+* @param[in]   charToPermute : charactere Ã  chiffrer
 * @param[out]  charPermuted  : charactere chiffrer
 *
 *************************************************************************************
@@ -92,14 +92,13 @@ char Rotor::activate(char charToPermute,int sens)
 
 
 			offset = m_startPosition - (m_ringSetting + m_position) + (charToPermute) - 1 ;
-			if (offset < 0) { offset = 26 - (-offset) % 26; }
+			if (offset < 0) { offset = 26 - ((-offset) % 26); }
 			charPermuted = offset % 26 + 1;
-
 			for (int i(0); i < 26; i++) {if ((m_internalWiringTab[0][i]) == (charPermuted+64)) { index = i; break; }}
 
 			charPermuted = m_internalWiringTab[1][index]-64;
 			offset = -m_startPosition + (m_ringSetting + m_position) + charPermuted - 1;
-			if (offset < 0) { offset = 26 - (-offset) % 26; }
+			if (offset < 0) { offset = 26 - ((-offset) % 26); }
 			charPermuted = offset % 26 + 1 + 64;
 
             break;
@@ -107,14 +106,14 @@ char Rotor::activate(char charToPermute,int sens)
         case -1:
 
 			offset = m_startPosition - (m_ringSetting + m_position) + (charToPermute) - 1 ;
-			if (offset < 0) { offset = 26 - (-offset) % 26; }
+			if (offset < 0) { offset = 26 - ((-offset) % 26); }
 			charPermuted = offset % 26 + 1;
 
 			for (int i(0); i < 26; i++) { if (m_internalWiringTab[1][i] == (charPermuted + 64)) { index = i; break; } }
 
 			charPermuted = m_internalWiringTab[0][index]-64;//-64
 			offset = -m_startPosition + (m_ringSetting + m_position) + charPermuted - 1;
-			if (offset < 0) { offset = 26 - (-offset)%26; }
+			if (offset < 0) { offset = 26 - ((-offset)%26); }
 			charPermuted = offset % 26 + 1 + 64;
 
             break;
