@@ -47,18 +47,24 @@ char Machine::activate(char charToCrypt)
 	
 	char R1_currentPosition,R1_stepping1,R1_stepping2;
 	char R2_currentPosition, R2_stepping1, R2_stepping2;
+	char R3_currentPosition;
 
-	R1_currentPosition = m_availableRotor[m_usedRotor[0]].get_rotorPosition() + 64;
+	R1_currentPosition = (m_availableRotor[m_usedRotor[0]].get_rotorPosition()) + 64;
 	R1_stepping1= m_availableRotor[m_usedRotor[0]].get_stepping1();
 	R1_stepping2= m_availableRotor[m_usedRotor[0]].get_stepping2();
 		
-	R2_currentPosition = m_availableRotor[m_usedRotor[1]].get_rotorPosition() + 64;
+	R2_currentPosition = (m_availableRotor[m_usedRotor[1]].get_rotorPosition()) + 64;
 	R2_stepping1 = m_availableRotor[m_usedRotor[1]].get_stepping1();
 	R2_stepping2 = m_availableRotor[m_usedRotor[1]].get_stepping2();
 
+	R3_currentPosition = (m_availableRotor[m_usedRotor[2]].get_rotorPosition()) + 64;
+	
+
 	// Rotation des rotors en fonction de la position du stepping
-	if (R1_currentPosition == R1_stepping1 || R1_currentPosition == R1_stepping2){ m_availableRotor[m_usedRotor[1]].rotate(-1);	}
-	if (R2_currentPosition == R2_stepping1 || R2_currentPosition == R2_stepping2){ m_availableRotor[m_usedRotor[2]].rotate(-1);	}
+	if (R1_currentPosition == R1_stepping1 || R1_currentPosition == R1_stepping2){
+		m_availableRotor[m_usedRotor[1]].rotate(-1);	}
+	if (R2_currentPosition == R2_stepping1 || R2_currentPosition == R2_stepping2){
+		m_availableRotor[m_usedRotor[2]].rotate(-1);	}
 
 	// A chaque chiffrage d'une lettre le premier rotor tourne
 	m_availableRotor[m_usedRotor[0]].rotate(-1);

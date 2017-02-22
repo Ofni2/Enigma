@@ -230,7 +230,16 @@ int Rotor::get_ringSetting()
 
 int Rotor::get_rotorPosition()
 {
-	return m_startPosition;
+	int offset;
+
+	//offset = m_startPosition - (m_ringSetting + m_position) + (1)-1;
+	//if (offset < 0) { offset = 26 - ((-offset) % 26); }
+	//offset = offset % 26 + 1;
+	
+	//= INDEX(CaratereASCII; EQUIV(MOD(startPosition - 1; 26) + 1; caractereIndex; 0))
+	offset = (m_startPosition - 1) % 26 + 1;
+		
+	return offset;
 }
 
 void Rotor::set_rotorPosition(int i)
