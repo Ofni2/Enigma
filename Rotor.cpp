@@ -6,9 +6,11 @@ using namespace std;
 
 
 /**
-************************
+*************************************************************************************
+*
 * Constructeur par defaut
-************************
+*
+*************************************************************************************
 **/
 Rotor::Rotor()
 {
@@ -31,9 +33,11 @@ Rotor::Rotor()
 
 
 /**
-************************
+*************************************************************************************
+*
 * Constructeur
-************************
+*
+*************************************************************************************
 **/
 Rotor::Rotor(string internalWiring, const int &ringSetting, const int &startPosition, const char &stepping1, const char &stepping2, const string &name)
 {
@@ -43,10 +47,12 @@ Rotor::Rotor(string internalWiring, const int &ringSetting, const int &startPosi
 		m_startPosition = startPosition;
 		m_position = 0;
 
+
+		// Les caracteres sont converti en majuscules. Si le caractere n'est pas une lettre on lance une erreure 
+
 		if ((stepping1 >= 'a' && stepping1 <= 'z'))	    { m_steppingPosition1 = stepping1 - 32;}
 		else if ((stepping1 >= 'A' && stepping1 <= 'Z')){ m_steppingPosition1 = stepping1;     }
 		else {	/* Throw exception*/ }
-
 
 		if ((stepping2 >= 'a' && stepping2 <= 'z'))		{ m_steppingPosition2 = stepping2 - 32;}
 		else if ((stepping2 >= 'A' && stepping2 <= 'Z')){ m_steppingPosition2 = stepping2;	   }
@@ -66,6 +72,7 @@ Rotor::Rotor(string internalWiring, const int &ringSetting, const int &startPosi
 
 /**
 *************************************************************************************
+*
 * Methode pour transformer un caratere à partir d'un table de correspondance
 * la table peut etre lue de gauche à droite ou de droite à gauche en fonction
 * de la variable "sens"
@@ -82,6 +89,7 @@ char Rotor::activate(char charToPermute,int sens)
 	int offset,index(0);
 	
 	//transform input char into an integer between 1 and 26 (a=1, ... ,Z=26)
+	// if the char is not a lettre throw an error
 	if ((charToPermute >= 'a' && charToPermute <= 'z')) { charToPermute = charToPermute - 96; }
 	else if ((charToPermute >= 'A' && charToPermute <= 'Z')) { charToPermute = charToPermute - 64; }
 	else { /*throw exception*/}
@@ -126,6 +134,7 @@ char Rotor::activate(char charToPermute,int sens)
 
 /**
 *************************************************************************************
+*
 * Methode pour afficher la table de correspondance
 *
 *************************************************************************************
@@ -143,24 +152,24 @@ void Rotor::DisplayPermutationTab()
 
 /**
 *************************************************************************************
-* Methode pour decaler d'un cran les elements de la table de correspondance
+*
+* Methode pour faire tourner d'un cran le rotor (décalage du cablage par rapport aux
+* connecteurs d'entré
 *
 * @param[in] decalage : indique le sens de decalage de la table
+*
 *************************************************************************************
 **/
 void Rotor::rotate(int decalage)
 {
-    
 	switch (decalage)
 	{
 
 	case -1:
-		//m_position--;
 		m_startPosition++;
 		break;
 
 	case 1:
-		//m_position++;
 		m_startPosition--;
 		break;
 
@@ -172,104 +181,132 @@ void Rotor::rotate(int decalage)
 
 /**
 *************************************************************************************
-* Methode pour
 *
-* @param[in]  x :
-* @param[out]   :
+* Methode pour obtenir le reglage du rotor
+*
+* @param[out] return : indique le reglage du rotor (int)
 *
 *************************************************************************************
 **/
-int Rotor::m_seek(char x,char S)
-{
-    switch (S)
-    {
-        case 'L':
-
-            for (int i(0); i<26; i++)
-            {
-                if (m_internalWiringTab[i][0]== x)
-                {
-                    return i;
-                }
-            }
-
-            break;
-
-        case 'R':
-
-            for (int i(0); i<26; i++)
-            {
-                if (m_internalWiringTab[i][1]== x)
-                {
-                    return i;
-                }
-            }
-        default :
-            break;
-
-    }
-
-    return -1;
-}
-
-
-int Rotor::charToInt(char x)
-{
-	return x;
-}
-
-char Rotor::intToChar(int i)
-{
-	return char(i);
-}
-
 int Rotor::get_ringSetting()
 {
 	return m_ringSetting;
 }
 
-int Rotor::get_rotorPosition()
-{
-	int offset;
 
-	//offset = m_startPosition - (m_ringSetting + m_position) + (1)-1;
-	//if (offset < 0) { offset = 26 - ((-offset) % 26); }
-	//offset = offset % 26 + 1;
-	
-	//= INDEX(CaratereASCII; EQUIV(MOD(startPosition - 1; 26) + 1; caractereIndex; 0))
-	offset = (m_startPosition - 1) % 26 + 1;
-		
-	return offset;
+/**
+*************************************************************************************
+*
+* Methode pour obtenir la position du rotor
+*
+* @param[out] return : indique la position du rotor. ( Entier compris entre 1(=a) et 26(=z) ) 
+*
+*************************************************************************************
+**/
+int Rotor::get_rotorPosition()
+{		
+	return (m_startPosition - 1) % 26 + 1;;
 }
 
+
+/**
+*************************************************************************************
+*
+* Methode pour définir la position de départ du rotor
+*
+* @param[int] int : définit la position du rotor ( ?? < i < ?? )
+*
+*************************************************************************************
+**/
 void Rotor::set_rotorPosition(int i)
 {
 	m_startPosition = i;
 }
 
+
+/**
+*************************************************************************************
+*
+* Methode pour définir le reglage du rotor
+*
+* @param[int] int : définit la position du rotor ( ?? < i < ?? )
+*
+*************************************************************************************
+**/
 void Rotor::set_ringSetting(int i)
 {
 	m_ringSetting = i;
 }
 
-int Rotor::isValidChar(char c)
-{
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {return 0;	}
 
-	return -1;
+/**
+*************************************************************************************
+*
+* Methode pour définir le nom du rotor
+*
+* @param[in] string : nom du rotor
+*
+*************************************************************************************
+**/
+void Rotor::set_name(std::string name)
+{
+	m_name = name;
 }
 
+
+/**
+*************************************************************************************
+*
+* Methode pour obtenir le nom du rotor
+*
+* @param[out] return : donne le nom du rotor  (string)
+*
+*************************************************************************************
+**/
 string Rotor::get_name()
 {
 	return m_name;
 }
 
+
+/**
+*************************************************************************************
+*
+* Methode qui donne le premier caractere impliquant un decallage du rotor suivant  (stepping)
+*
+* @param[out] return : donne le caractere de "stepping" (char)
+*
+*************************************************************************************
+**/
 char Rotor::get_stepping1()
 {
 	return m_steppingPosition1;
 }
 
+
+/**
+*************************************************************************************
+*
+* Methode qui donne le deuxieme caractere impliquant un decallage du rotor suivant  (stepping)
+*
+* @param[out] return : donne le caractere de "stepping" (char)
+*
+*************************************************************************************
+**/
 char Rotor::get_stepping2()
 {
 	return m_steppingPosition2;
+}
+
+
+/**
+*************************************************************************************
+*
+* Methode pour réinitialiser un rotor
+*
+*************************************************************************************
+**/
+void Rotor::reset()
+{
+
 }

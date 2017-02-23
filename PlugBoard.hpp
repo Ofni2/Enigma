@@ -1,5 +1,5 @@
-#ifndef DEF_PlugBoard
-#define DEF_PlugBoard
+#ifndef PLUGBOARD_H
+#define PLUGBOARD_H
 
 #include <string>
 #include <iostream>
