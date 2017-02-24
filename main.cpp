@@ -1,11 +1,9 @@
-#include <iostream>
-
 #include "PlugBoard.hpp"
 #include "Rotor.hpp"
 #include "Reflector.hpp"
 #include "Machine.hpp"
 #include "Enigma.hpp"
-#include "main.h"
+
 
 
 using namespace std;

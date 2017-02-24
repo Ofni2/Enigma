@@ -1,9 +1,12 @@
 #ifndef PLUGBOARD_H
 #define PLUGBOARD_H
 
+// To use without precompilation
+
 #include <string>
 #include <iostream>
 #include <map>
+
 
 
 class PlugBoard

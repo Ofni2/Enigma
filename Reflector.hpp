@@ -1,5 +1,6 @@
 #ifndef DEF_REFLECTER
 #define DEF_REFLECTER
+// To use without precompilation
 
 #include <vector>
 #include <string>

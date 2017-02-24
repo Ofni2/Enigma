@@ -1,6 +1,7 @@
 #include "Rotor.hpp"
 
 
+
 using namespace std;
 
 
@@ -99,13 +100,13 @@ char Rotor::activate(char charToPermute,int sens)
         case 1:
 
 
-			offset = m_startPosition - (m_ringSetting + m_position) + (charToPermute) - 1 ;
+			offset = (m_startPosition+m_position) - m_ringSetting + (charToPermute) - 1 ;
 			if (offset < 0) { offset = 26 - ((-offset) % 26); }
 			charPermuted = offset % 26 + 1;
 			for (int i(0); i < 26; i++) {if ((m_internalWiringTab[0][i]) == (charPermuted+64)) { index = i; break; }}
 
 			charPermuted = m_internalWiringTab[1][index]-64;
-			offset = -m_startPosition + (m_ringSetting + m_position) + charPermuted - 1;
+			offset = -(m_startPosition+m_position) + m_ringSetting + charPermuted - 1;
 			if (offset < 0) { offset = 26 - ((-offset) % 26); }
 			charPermuted = offset % 26 + 1 + 64;
 
@@ -113,14 +114,14 @@ char Rotor::activate(char charToPermute,int sens)
 
         case -1:
 
-			offset = m_startPosition - (m_ringSetting + m_position) + (charToPermute) - 1 ;
+			offset = (m_startPosition + m_position) - m_ringSetting  + (charToPermute) - 1 ;
 			if (offset < 0) { offset = 26 - ((-offset) % 26); }
 			charPermuted = offset % 26 + 1;
 
 			for (int i(0); i < 26; i++) { if (m_internalWiringTab[1][i] == (charPermuted + 64)) { index = i; break; } }
 
 			charPermuted = m_internalWiringTab[0][index]-64;//-64
-			offset = -m_startPosition + (m_ringSetting + m_position) + charPermuted - 1;
+			offset = -(m_startPosition+ m_position) + m_ringSetting  + charPermuted - 1;
 			if (offset < 0) { offset = 26 - ((-offset)%26); }
 			charPermuted = offset % 26 + 1 + 64;
 
@@ -166,11 +167,11 @@ void Rotor::rotate(int decalage)
 	{
 
 	case -1:
-		m_startPosition++;
+		m_position++;
 		break;
 
 	case 1:
-		m_startPosition--;
+		m_position--;
 		break;
 
 	case 0:
@@ -205,7 +206,7 @@ int Rotor::get_ringSetting()
 **/
 int Rotor::get_rotorPosition()
 {		
-	return (m_startPosition - 1) % 26 + 1;;
+	return ((m_startPosition+m_position) - 1) % 26 + 1;;
 }
 
 

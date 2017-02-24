@@ -1,10 +1,5 @@
 #include "Enigma.hpp"
 
-#include <boost/property_tree/xml_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
-#include <boost/foreach.hpp>
-#include <boost/tokenizer.hpp>
-#include <boost/token_iterator.hpp>
 
 using namespace std;
 using boost::property_tree::ptree;
@@ -148,5 +143,3 @@ void Enigma::init()
 		}
 	}
 }
-
-

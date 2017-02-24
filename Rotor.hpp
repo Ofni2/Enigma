@@ -1,10 +1,13 @@
 #ifndef ROTOR_H
 #define ROTOR_H
 
+// To use without precompilation
+
 #include <vector>
 #include <string>
 #include <iostream>
 #include <string>
+
 
 
 class Rotor

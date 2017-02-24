@@ -1,8 +1,5 @@
 #include "Machine.hpp"
 
-#include <fstream>
-#include <iostream>
-
 using namespace std;
 
 /**
@@ -77,7 +74,6 @@ char Machine::activate(char charToCrypt)
 	char R1_currentPosition,R1_stepping1,R1_stepping2;
 	char R2_currentPosition, R2_stepping1, R2_stepping2;
 
-	
 	R1_stepping1= m_availableRotor[m_usedRotor[0]].get_stepping1();
 	R1_stepping2= m_availableRotor[m_usedRotor[0]].get_stepping2();
 	R2_stepping1 = m_availableRotor[m_usedRotor[1]].get_stepping1();
