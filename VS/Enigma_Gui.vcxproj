@@ -74,13 +74,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\Source\Enigma.hpp" />
-    <ClInclude Include="..\..\Source\Machine.hpp" />
-    <ClInclude Include="..\..\Source\PlugBoard.hpp" />
-    <ClInclude Include="..\..\Source\Reflector.hpp" />
-    <ClInclude Include="..\..\Source\Rotor.hpp" />
+    <ClInclude Include="..\Sources\Enigma.hpp" />
+    <ClInclude Include="..\Sources\Machine.hpp" />
     <ClInclude Include="GeneratedFiles\ui_MainWindow.h" />
-    <CustomBuild Include="..\..\Source\MainWindow.h">
+    <CustomBuild Include="..\Sources\MainWindow.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing MainWindow.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -90,15 +87,18 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets"</Command>
     </CustomBuild>
+    <ClInclude Include="..\Sources\PlugBoard.hpp" />
+    <ClInclude Include="..\Sources\Reflector.hpp" />
+    <ClInclude Include="..\Sources\Rotor.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Source\Enigma.cpp" />
-    <ClCompile Include="..\..\Source\Machine.cpp" />
-    <ClCompile Include="..\..\Source\main.cpp" />
-    <ClCompile Include="..\..\Source\MainWindow.cpp" />
-    <ClCompile Include="..\..\Source\PlugBoard.cpp" />
-    <ClCompile Include="..\..\Source\Reflector.cpp" />
-    <ClCompile Include="..\..\Source\Rotor.cpp" />
+    <ClCompile Include="..\Sources\Enigma.cpp" />
+    <ClCompile Include="..\Sources\Machine.cpp" />
+    <ClCompile Include="..\Sources\main.cpp" />
+    <ClCompile Include="..\Sources\MainWindow.cpp" />
+    <ClCompile Include="..\Sources\PlugBoard.cpp" />
+    <ClCompile Include="..\Sources\Reflector.cpp" />
+    <ClCompile Include="..\Sources\Rotor.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_MainWindow.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -113,7 +113,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="..\..\Source\MainWindow.ui">
+    <Xml Include="..\Sources\Enigma.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Docs\Enigma_simulator.xlsm" />
+    <CustomBuild Include="..\Sources\MainWindow.ui">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
@@ -123,9 +127,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <CustomBuild Include="..\..\Source\MainWindow.qrc">
+    <CustomBuild Include="..\Sources\MainWindow.qrc">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FullPath);%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Rcc%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
@@ -135,12 +137,6 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
     </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="..\..\Source\Enigma.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Source\Enigma_simulator.xlsm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
