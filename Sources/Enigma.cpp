@@ -39,7 +39,7 @@ void Enigma::init()
 
 
 	//parse Enigma configuration file, and populate ptree
-	read_xml("C:\\Users\\gchambre\\Source\\Repos\\Enigma\\Source\\Enigma.xml", pt);
+	read_xml("Enigma.xml", pt);
 
 	// create rotors from configuration file. the list of available rotors are placed in a vector
 	BOOST_FOREACH(ptree::value_type const& v, pt.get_child("xml.RotorList") )
