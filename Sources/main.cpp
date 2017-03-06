@@ -4,7 +4,7 @@
 #include "Machine.hpp"
 #include "Enigma.hpp"
 
-#include <QApplication>
+//#include <QApplication>
 
 
 
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     string text(" ");
     string text_c("");
 	
-	QApplication app(argc, argv);
+	//QApplication app(argc, argv);
 
 	Enigma t;
 	Machine M;
@@ -61,5 +61,5 @@ int main(int argc, char *argv[])
 
 	cout << "RESULTAT ---> " << text_c << endl;
 
-    return app.exec();
+    //return app.exec();
 }
