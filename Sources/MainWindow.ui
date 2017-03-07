@@ -1,29 +1,257 @@
-<UI version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>MainWindowClass</class>
- <widget class="QMainWindow" name="MainWindowClass" >
-  <property name="objectName" >
-   <string notr="true">MainWindowClass</string>
-  </property>
-  <property name="geometry" >
+ <widget class="QMainWindow" name="MainWindowClass">
+  <property name="geometry">
    <rect>
-	<x>0</x>
-	<y>0</y>
-	<width>600</width>
-	<height>400</height>
+    <x>0</x>
+    <y>0</y>
+    <width>1095</width>
+    <height>532</height>
    </rect>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QMenuBar" name="menuBar" />
-  <widget class="QToolBar" name="mainToolBar" />
-  <widget class="QWidget" name="centralWidget" />
-  <widget class="QStatusBar" name="statusBar" />
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QGroupBox" name="input_text_box">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>20</y>
+      <width>300</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Input text</string>
+    </property>
+    <widget class="QPlainTextEdit" name="Input_text">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>281</width>
+       <height>401</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Consolas</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="cursor" stdset="0">
+      <cursorShape>IBeamCursor</cursorShape>
+     </property>
+     <property name="plainText">
+      <string>QBLTW LDAHH YEOEF PTWYB
+LENDP MKOXL DFAMU DWIJD
+XRJZ</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="output_text_box">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>20</y>
+      <width>300</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Output text</string>
+    </property>
+    <widget class="QTextBrowser" name="Output_text">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>281</width>
+       <height>401</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="RUN_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>360</y>
+      <width>111</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>RUN</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="machine_box">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>20</y>
+      <width>351</width>
+      <height>301</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>Machine</string>
+    </property>
+    <widget class="QWidget" name="gridLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>40</y>
+       <width>331</width>
+       <height>231</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <item row="6" column="1" colspan="3">
+       <widget class="QComboBox" name="Reflector"/>
+      </item>
+      <item row="4" column="2">
+       <widget class="QComboBox" name="Rotor_2_Postion"/>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Rotor name</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="3">
+       <widget class="QComboBox" name="Rotor_1_Setting"/>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="Rotor_3_Postion"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_7">
+        <property name="text">
+         <string>Start position</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="Rotor_3_Setting"/>
+      </item>
+      <item row="3" column="2">
+       <widget class="QComboBox" name="Rotor_2_Setting"/>
+      </item>
+      <item row="4" column="3">
+       <widget class="QComboBox" name="Rotor_1_Postion"/>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_8">
+        <property name="text">
+         <string>Ring setting</string>
+        </property>
+       </widget>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="label_9">
+        <property name="text">
+         <string>Reflector</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="Rotor_3_Name"/>
+      </item>
+      <item row="2" column="2">
+       <widget class="QComboBox" name="Rotor_2_Name"/>
+      </item>
+      <item row="2" column="3">
+       <widget class="QComboBox" name="Rotor_1_Name"/>
+      </item>
+      <item row="1" column="0" colspan="4">
+       <spacer name="horizontalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>Machine</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="0" colspan="4">
+       <spacer name="horizontalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="0" column="1" colspan="3">
+       <widget class="QComboBox" name="Machine"/>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1095</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuRUN">
+    <property name="title">
+     <string>&amp;Fichiers</string>
+    </property>
+   </widget>
+   <addaction name="menuRUN"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
  </widget>
- <layoutDefault spacing="6" margin="11" />
- <pixmapfunction></pixmapfunction>
+ <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>Output_text</tabstop>
+  <tabstop>RUN_pushButton</tabstop>
+  <tabstop>Machine</tabstop>
+  <tabstop>Rotor_3_Name</tabstop>
+  <tabstop>Rotor_2_Postion</tabstop>
+  <tabstop>Rotor_1_Setting</tabstop>
+  <tabstop>Rotor_3_Postion</tabstop>
+  <tabstop>Rotor_3_Setting</tabstop>
+  <tabstop>Rotor_2_Setting</tabstop>
+  <tabstop>Rotor_1_Postion</tabstop>
+  <tabstop>Reflector</tabstop>
+  <tabstop>Rotor_2_Name</tabstop>
+  <tabstop>Rotor_1_Name</tabstop>
+  <tabstop>Input_text</tabstop>
+ </tabstops>
  <resources>
-   <include location="MainWindow.qrc"/>
+  <include location="MainWindow.qrc"/>
  </resources>
  <connections/>
-</UI>
+</ui>

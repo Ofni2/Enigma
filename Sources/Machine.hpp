@@ -9,11 +9,6 @@
 #include "Reflector.hpp"
 #include "PlugBoard.hpp"
 
-// To use without precompilation
-
-
-
-
 
 class Machine
 {

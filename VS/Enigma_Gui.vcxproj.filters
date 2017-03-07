@@ -49,6 +49,9 @@
     <CustomBuild Include="..\Sources\MainWindow.qrc">
       <Filter>Resource Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="..\Sources\EnigmaGUI.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\Enigma.hpp">
@@ -100,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\qrc_MainWindow.cpp">
       <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\EnigmaGUI.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

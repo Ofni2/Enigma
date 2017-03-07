@@ -4,7 +4,10 @@
 #include "Machine.hpp"
 #include "Enigma.hpp"
 
-//#include <QApplication>
+#include "MainWindow.h"
+#include "EnigmaGUI.h"
+
+#include <QApplication>
 
 
 
@@ -13,17 +16,20 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     int i(0),j(0);
-    char char_to_crypt(' ');
     char char_crypted(' ');
     string text(" ");
     string text_c("");
 	
-	//QApplication app(argc, argv);
+	QApplication app(argc, argv);
+	EnigmaGUI enigmaGUIMain;
+
+	enigmaGUIMain.show();
 
 	Enigma t;
 	Machine M;
 
 	t.init();
+
 
 	M=t.get_machine("Enigma I");
 
@@ -44,7 +50,7 @@ int main(int argc, char *argv[])
 
 	int textSize(text.size());
 	j=1;
-	for (int i(0); i<textSize; i++)
+	for (i=0; i<textSize; i++)
 	{
 		if (text[i] == ' ')
 		{
@@ -61,5 +67,5 @@ int main(int argc, char *argv[])
 
 	cout << "RESULTAT ---> " << text_c << endl;
 
-    //return app.exec();
+    return app.exec();
 }
